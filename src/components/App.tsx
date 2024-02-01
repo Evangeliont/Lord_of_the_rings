@@ -1,10 +1,11 @@
-import s from "./app.module.scss";
+import { Content } from "./shared/Content/Content";
+import { Header } from "./shared/Header/Header";
 
 function App() {
   return (
-    <div>
-      <h1 className={s.title}>Привет мир!</h1>
-    </div>
+    <Content>
+      <Header />
+    </Content>
   );
 }
 
