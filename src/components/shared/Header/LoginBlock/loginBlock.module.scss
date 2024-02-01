@@ -1,0 +1,13 @@
+.loginWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.loginSignIn {
+  margin-right: 20px;
+}
+
+.loginSignIn,
+.login {
+  cursor: pointer;
+}

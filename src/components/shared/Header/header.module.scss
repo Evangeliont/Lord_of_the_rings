@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background-color: #fff;
+  border-radius: 0 0 7px 7px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 0 0 38px;
+}
+
+.headerLogoLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.headerLogoImg {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  cursor: pointer;
+  margin-right: 10px;
+}
