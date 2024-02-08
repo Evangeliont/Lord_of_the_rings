@@ -1,5 +1,5 @@
 import s from "./header.module.scss";
-import logoType from "../../../assets/logotype.png";
+import logoType from "../../assets/logotype.png";
 import { SearchBlock } from "./SearchBlock";
 import { LoginBlock } from "./LoginBlock";
 
