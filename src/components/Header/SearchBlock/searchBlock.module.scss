@@ -1,5 +1,8 @@
 .searchBlock {
   display: flex;
+  background-color: #fff;
+  border-radius: 0 0 7px 7px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 input,
@@ -7,23 +10,4 @@ button {
   border: none;
   outline: 0;
   background-color: transparent;
-}
-
-.searchInput,
-.searchButton {
-  border-radius: 30px;
-  padding: 10px 30px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.searchInput {
-  border-radius: 30px;
-  background-color: #fff;
-  margin-right: 20px;
-}
-
-.searchButton {
-  cursor: pointer;
-  color: #fff;
-  background-color: #030303;
 }
