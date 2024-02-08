@@ -1,0 +1,15 @@
+.card {
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 10px 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card:not(:last-child) {
+  margin-right: 30px;
+}
+
+.img {
+  max-width: 100%;
+  object-fit: contain;
+}

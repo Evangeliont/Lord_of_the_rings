@@ -1,21 +1,12 @@
-import { CharacterCustomElement } from "../../../interfaces/character";
+import { ArrCard } from "../CardList";
+import s from "./card.module.scss";
 
-interface Card {
-  characters: CharacterCustomElement[];
-}
-
-export const Card = ({ characters }: Card) => {
-  console.log(characters);
-
+export const Card = ({ imgUrl, title, description }: ArrCard) => {
   return (
-    <div className="character-list">
-      {characters.map((item) => (
-        <div key={item.id} className="item-card">
-          <h2>{item.name}</h2>
-          <p>Race: {item.race}</p>
-          <p>Gender: {item.gender}</p>
-        </div>
-      ))}
-    </div>
+    <li className={s.card}>
+      <img className={s.img} src={imgUrl} alt="Заглушка" />
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </li>
   );
 };
