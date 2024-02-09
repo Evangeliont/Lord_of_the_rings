@@ -3,7 +3,7 @@ import { Header } from "./components/Header/Header";
 import { Wrapper } from "./components/Wrapper";
 import { Page } from "./components/Pages";
 import { Main } from "./components/Main";
-import { CardList } from "./components/CardList";
+import { CardList } from "./components/CardList/CardList";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 

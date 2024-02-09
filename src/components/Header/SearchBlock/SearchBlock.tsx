@@ -4,7 +4,7 @@ export const SearchBlock = () => {
   return (
     <form className={s.searchBlock}>
       <input className={s.searchInput} type="search" />
-      <button className={s.searchButton} type="submit">
+      <button className={s.searchBlock} type="submit">
         Search
       </button>
     </form>
