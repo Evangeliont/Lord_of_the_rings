@@ -1,6 +1,10 @@
 .card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
   width: calc((100% - 20px) / 3);
-  height: 380px;
+  height: 450px;
   background-color: #fff;
   border-radius: 30px;
   padding: 10px 30px;
@@ -11,4 +15,20 @@
 .img {
   max-width: 100%;
   object-fit: contain;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.element {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.linkTo {
+  color: #4180ff;
+  font-size: 18;
 }

@@ -1,25 +1,26 @@
 import s from "./cardList.module.scss";
 import { Card } from "./Card/Card";
-import { useGetCharacterQuery } from "../../store/services/getDataOneApi";
+import { getDataOneApi } from "../../store/services/getDataOneApi";
 
 export const CardList = () => {
-  const { data, error, isLoading } = useGetCharacterQuery("");
+  const { data, isLoading } = getDataOneApi.useGetCharacterQuery("");
 
   return (
-    <ul className={s.cardList}>
-      {isLoading && <div>Loading...</div>}
-      {error && null}
-      {!!data &&
-        data.docs.map((item) => (
-          <Card
-            key={item._id}
-            race={item.race}
-            gender={item.gender}
-            spouse={item.spouse}
-            wikiUrl={item.wikiUrl}
-            name={item.name}
-          />
-        ))}
-    </ul>
+    <div>
+      <h1 className={s.title}>Heroes of the universe LOTR</h1>
+      <ul className={s.cardList}>
+        {isLoading && <div>Loading...</div>}
+        {!!data &&
+          data.docs.map((item) => (
+            <Card
+              key={item.id}
+              race={item.race}
+              gender={item.gender}
+              wikiUrl={item.wikiUrl}
+              name={item.name}
+            />
+          ))}
+      </ul>
+    </div>
   );
 };
