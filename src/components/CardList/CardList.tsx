@@ -1,32 +1,25 @@
-import { Card } from "./Card/Card";
 import s from "./cardList.module.scss";
-import imgUrl from "../../assets/img.png";
-
-export interface ArrCard {
-  id: number;
-  imgUrl: string;
-  title: string;
-  description: string;
-}
-
-const arrCard: ArrCard[] = [
-  { id: 1, imgUrl: imgUrl, title: "Леголас", description: "Кароль Лехолесья" },
-  { id: 2, imgUrl: imgUrl, title: "Арагорн", description: "Кароль Гондора" },
-  { id: 3, imgUrl: imgUrl, title: "Гимли", description: "Кароль под горой" },
-];
+import { Card } from "./Card/Card";
+import { useGetCharacterQuery } from "../../store/services/getDataOneApi";
 
 export const CardList = () => {
+  const { data, error, isLoading } = useGetCharacterQuery("");
+
   return (
     <ul className={s.cardList}>
-      {arrCard.map((card, id) => (
-        <Card
-          key={id}
-          id={id}
-          imgUrl={imgUrl}
-          title={card.title}
-          description={card.description}
-        />
-      ))}
+      {isLoading && <div>Loading...</div>}
+      {error && null}
+      {!!data &&
+        data.docs.map((item) => (
+          <Card
+            key={item._id}
+            race={item.race}
+            gender={item.gender}
+            spouse={item.spouse}
+            wikiUrl={item.wikiUrl}
+            name={item.name}
+          />
+        ))}
     </ul>
   );
 };

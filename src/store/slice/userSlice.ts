@@ -1,6 +1,5 @@
-import { User } from "../../interfaces/user";
-
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { User } from "../../interfaces/user";
 
 interface authState {
   isAuth: boolean;
@@ -8,10 +7,9 @@ interface authState {
 }
 
 const initialStateUser: User = {
-  displayName: "",
+  id: "",
+  userName: "",
   email: "",
-  photoURL: "",
-  uid: "",
 };
 
 const initialState: authState = {
