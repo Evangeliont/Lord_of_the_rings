@@ -9,7 +9,7 @@ const initialState: authState = {
   isDropDownSignOut: false,
 };
 
-export const interfaceСhange = createSlice({
+export const auth = createSlice({
   name: "auth",
   initialState,
   reducers: {
@@ -24,5 +24,5 @@ export const interfaceСhange = createSlice({
   },
 });
 
-export default interfaceСhange.reducer;
-export const { changeIsDropDownSignOut } = interfaceСhange.actions;
+export default auth.reducer;
+export const { changeIsDropDownSignOut } = auth.actions;

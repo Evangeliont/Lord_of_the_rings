@@ -1,0 +1,18 @@
+.notfound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.error {
+  color: #e33e3e;
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.errorMessage {
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 40px;
+}
