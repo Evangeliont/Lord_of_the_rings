@@ -19,8 +19,8 @@
 #### React
 
 - [x] Пишем функциональные компоненты c хуками в приоритете над классовыми
-- [ ] Есть разделение на умные и глупые компоненты:
-- [ ] Есть рендеринг списков:
+- [x] Есть разделение на умные и глупые компоненты: [Глупый](https://github.com/Evangeliont/aston-react/blob/master/src/App.tsx) [Умный]
+- [x] Есть рендеринг списков: [Список](https://github.com/Evangeliont/aston-react/blob/master/src/components/CardList/CardList.tsx)
 - [ ] Реализована хотя бы одна форма:
 - [ ] Есть применение Контекст API:
 - [ ] Есть применение предохранителя:
@@ -31,17 +31,15 @@
 
 #### Redux
 
-- [ ] Используем Modern Redux with Redux Toolkit:
-- [ ] Используем слайсы:
+- [x] Используем Modern Redux with Redux Toolkit:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/store.ts)
+- [x] Используем слайсы:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/slice/authSlice.ts)
 - [ ] Есть хотя бы одна кастомная мидлвара или `createListenerMiddleware`:
-- [ ] Используется RTK Query:
-- [ ] Используется Transforming Responses:
+- [x] Используется RTK Query:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/services/getDataOneApi.ts)
+- [x] Используется Transforming Responses:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/util/serialization.ts)
 
 ---
 
 ### 2 уровень (необязательный)
 
 - [x] Используется TypeScript
-- [ ] Использвуется Firebase:
 - [x] настроен CI/CD
-- [ ] Связь UI и бизнес-логики построена не через команды, а через события:
