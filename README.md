@@ -25,15 +25,15 @@
 - [ ] Есть применение Контекст API:
 - [ ] Есть применение предохранителя:
 - [ ] Есть хотя бы один кастомный хук:
-- [ ] Хотя бы несколько компонентов используют PropTypes:
+- [x] Хотя бы несколько компонентов используют PropTypes: (Button)[https://github.com/Evangeliont/aston-react/blob/master/src/components/Button/Button.tsx]
 - [ ] Поиск не должен триггерить много запросов к серверу (debounce):
-- [ ] Есть применение lazy + Suspense:
+- [x] Есть применение lazy + Suspense:
 
 #### Redux
 
 - [x] Используем Modern Redux with Redux Toolkit:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/store.ts)
 - [x] Используем слайсы:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/slice/authSlice.ts)
-- [ ] Есть хотя бы одна кастомная мидлвара или `createListenerMiddleware`:
+- [x] Есть хотя бы одна кастомная мидлвара или `createListenerMiddleware`:
 - [x] Используется RTK Query:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/services/getDataOneApi.ts)
 - [x] Используется Transforming Responses:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/util/serialization.ts)
 

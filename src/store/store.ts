@@ -2,6 +2,7 @@ import { configureStore, ConfigureStoreOptions } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { getDataOneApi } from "./services/getDataOneApi";
 import slices from "./slice";
+import { loggerMiddleware } from "../middleware/loggerMiddleware";
 
 export const createStore = (
   options?: ConfigureStoreOptions["preloadedState"] | undefined
@@ -12,7 +13,9 @@ export const createStore = (
       slices,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(getDataOneApi.middleware),
+      getDefaultMiddleware()
+        .concat(getDataOneApi.middleware)
+        .concat(loggerMiddleware),
     ...options,
   });
 

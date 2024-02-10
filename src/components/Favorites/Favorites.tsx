@@ -1,5 +1,7 @@
 import { List } from "../List/List";
 
-export const Favorites = () => {
+const Favorites = () => {
   return <List>Not Found</List>;
 };
+
+export default Favorites;

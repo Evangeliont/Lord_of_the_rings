@@ -1,9 +1,9 @@
 import s from "./cardList.module.scss";
 import { Card } from "./Card/Card";
-import { getDataOneApi } from "../../store/services/getDataOneApi";
 import { List } from "../List/List";
+import { getDataOneApi } from "../../store/services/getDataOneApi";
 
-export const CardList = () => {
+const CardList = () => {
   const { data, isLoading } = getDataOneApi.useGetCharacterQuery("");
 
   return (
@@ -15,6 +15,7 @@ export const CardList = () => {
           data.docs.map((item) => (
             <Card
               key={item.id}
+              id={item.id}
               race={item.race}
               gender={item.gender}
               wikiUrl={item.wikiUrl}
@@ -25,3 +26,5 @@ export const CardList = () => {
     </div>
   );
 };
+
+export default CardList;
