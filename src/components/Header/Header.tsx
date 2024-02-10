@@ -3,10 +3,13 @@ import logoType from "../../assets/logotype.png";
 import { SearchBlock } from "./SearchBlock";
 import { LoginBlock } from "./LoginBlock";
 import { Link } from "react-router-dom";
+import useTheme from "../../hooks/useTheme";
 
-export const Header = () => {
+export const Header: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <header className={s.header}>
+    <header className={`${s.header} ${theme === "dark" ? s.darkTheme : ""}`}>
       <a href="/" className={s.headerLogoLink}>
         <img className={s.headerLogoImg} src={logoType} alt="logo" />
         The Encyclopedia of the LOTR
@@ -26,6 +29,9 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
+      <button className={s.toggleTheme} onClick={toggleTheme}>
+        Toggle Theme
+      </button>
       <LoginBlock />
     </header>
   );

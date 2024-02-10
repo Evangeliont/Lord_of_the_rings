@@ -20,22 +20,22 @@
 
 - [x] Пишем функциональные компоненты c хуками в приоритете над классовыми
 - [x] Есть разделение на умные и глупые компоненты: [Глупый](https://github.com/Evangeliont/aston-react/blob/master/src/App.tsx) [Умный]
-- [x] Есть рендеринг списков: [Список](https://github.com/Evangeliont/aston-react/blob/master/src/components/CardList/CardList.tsx)
+- [x] Есть рендеринг списков: [CardList](https://github.com/Evangeliont/aston-react/blob/master/src/components/CardList/CardList.tsx)
 - [ ] Реализована хотя бы одна форма:
 - [ ] Есть применение Контекст API:
 - [ ] Есть применение предохранителя:
 - [ ] Есть хотя бы один кастомный хук:
-- [x] Хотя бы несколько компонентов используют PropTypes: (Button)[https://github.com/Evangeliont/aston-react/blob/master/src/components/Button/Button.tsx]
+- [x] Хотя бы несколько компонентов используют PropTypes: [Пример](https://github.com/Evangeliont/aston-react/blob/master/src/components/Button/Button.tsx)
 - [ ] Поиск не должен триггерить много запросов к серверу (debounce):
-- [x] Есть применение lazy + Suspense:
+- [x] Есть применение lazy + Suspense: [AppRouter](https://github.com/Evangeliont/aston-react/blob/master/src/AppRouter/AppRouter.tsx)
 
 #### Redux
 
-- [x] Используем Modern Redux with Redux Toolkit:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/store.ts)
-- [x] Используем слайсы:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/slice/authSlice.ts)
+- [x] Используем Modern Redux with Redux Toolkit:[Store](https://github.com/Evangeliont/aston-react/blob/master/src/store/store.ts)
+- [x] Используем слайсы:[authSlice](https://github.com/Evangeliont/aston-react/blob/master/src/store/slice/authSlice.ts)
 - [x] Есть хотя бы одна кастомная мидлвара или `createListenerMiddleware`:
-- [x] Используется RTK Query:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/store/services/getDataOneApi.ts)
-- [x] Используется Transforming Responses:[Пример](https://github.com/Evangeliont/aston-react/blob/master/src/util/serialization.ts)
+- [x] Используется RTK Query:[getDataOneApi](https://github.com/Evangeliont/aston-react/blob/master/src/store/services/getDataOneApi.ts)
+- [x] Используется Transforming Responses:[Serialization](https://github.com/Evangeliont/aston-react/blob/master/src/util/serialization.ts)
 
 ---
 
