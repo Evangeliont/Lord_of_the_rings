@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 import { Layout } from "../components/Layout";
 import { NotFound } from "../components/NotFound";
 import { Favorites } from "../components/Favorites";
+import { History } from "../components/History";
 
 export const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ export const AppRouter = () => {
           <Route path="/" element={<Navigate to="/posts" replace />} />
           <Route path="posts" element={<CardList />} />
           <Route path="favorites" element={<Favorites />} />
+          <Route path="history" element={<History />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>

@@ -9,5 +9,13 @@
 
 .loginSignIn,
 .login {
+  color: #333333;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
   cursor: pointer;
+}
+
+.loginSignIn:hover,
+.login:hover {
+  color: #5757fa;
 }
