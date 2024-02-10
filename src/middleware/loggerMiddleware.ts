@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable no-console */
 import { type Middleware } from "@reduxjs/toolkit";
 import { isAction } from "@reduxjs/toolkit";
 
 import { RootState } from "../store/store";
 
-export const loggerMiddleware: Middleware<unknown, RootState> =
+const loggerMiddleware: Middleware<{}, RootState> =
   (store) => (next) => (action) => {
     if (isAction(action)) {
       if (!action.type) {
@@ -18,3 +20,5 @@ export const loggerMiddleware: Middleware<unknown, RootState> =
 
     console.log("next state: ", store.getState());
   };
+
+export default loggerMiddleware;
