@@ -1,25 +1,33 @@
+import { Suspense, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { CardList } from "../components/CardList/CardList";
+
 import { Content } from "../components/Content";
 import { Header } from "../components/Header";
 import { Layout } from "../components/Layout";
-import { NotFound } from "../components/NotFound";
-import { Favorites } from "../components/Favorites";
-import { History } from "../components/History";
+
+const CardList = lazy(() => import("../components/CardList/CardList"));
+const Favorites = lazy(() => import("../components/Favorites/Favorites"));
+const History = lazy(() => import("../components/History/History"));
+const NotFound = lazy(() => import("../components/NotFound/NotFound"));
+const CardDetails = lazy(
+  () => import("../components/CardList/CardDetails/CardDetails")
+);
 
 export const AppRouter = () => {
   return (
     <Content>
       <Header />
       <Layout>
-        <Routes>
-          <Route path="/" element={<Navigate to="/posts" replace />} />
-          <Route path="posts" element={<CardList />} />
-          <Route path="favorites" element={<Favorites />} />
-          <Route path="history" element={<History />} />
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/404" replace />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<CardList />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/history" element={<History />} />
+            <Route path="characters/:id" element={<CardDetails />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </Content>
   );
