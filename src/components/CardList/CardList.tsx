@@ -1,6 +1,7 @@
 import s from "./cardList.module.scss";
 import { Card } from "./Card/Card";
 import { getDataOneApi } from "../../store/services/getDataOneApi";
+import { List } from "../List/List";
 
 export const CardList = () => {
   const { data, isLoading } = getDataOneApi.useGetCharacterQuery("");
@@ -8,7 +9,7 @@ export const CardList = () => {
   return (
     <div>
       <h1 className={s.title}>Heroes of the universe LOTR</h1>
-      <ul className={s.cardList}>
+      <List>
         {isLoading && <div>Loading...</div>}
         {!!data &&
           data.docs.map((item) => (
@@ -20,7 +21,7 @@ export const CardList = () => {
               name={item.name}
             />
           ))}
-      </ul>
+      </List>
     </div>
   );
 };
