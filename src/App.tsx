@@ -4,17 +4,20 @@ import { Main } from "./components/Main";
 import { CardList } from "./components/CardList/CardList";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <Provider store={store}>
-      <Content>
-        <Header />
-        <Main>
-          <CardList />
-        </Main>
-      </Content>
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Content>
+          <Header />
+          <Main>
+            <CardList />
+          </Main>
+        </Content>
+      </Provider>
+    </BrowserRouter>
   );
 }
 
