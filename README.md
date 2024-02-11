@@ -24,18 +24,18 @@
 - ~~[ ] Реализована хотя бы одна форма:~~
 - [x] Есть применение Контекст API: [useTheme](https://github.com/Evangeliont/aston-react/blob/master/src/hooks/useTheme.ts)
 - [x] Есть применение предохранителя: [https://github.com/Evangeliont/aston-react/blob/master/src/AppRouter/AppRouter.tsx](AppRouter)
-- [x] Есть хотя бы один кастомный хук:[useTheme](https://github.com/Evangeliont/aston-react/blob/master/src/hooks/useTheme.ts)
+- [x] Есть хотя бы один кастомный хук: [useTheme](https://github.com/Evangeliont/aston-react/blob/master/src/hooks/useTheme.ts)
 - [x] Хотя бы несколько компонентов используют PropTypes: [Button](https://github.com/Evangeliont/aston-react/blob/master/src/components/Button/Button.tsx)
 - ~~[ ] Поиск не должен триггерить много запросов к серверу (debounce):~~
-- [x] Есть применение lazy + Suspense: [AppRouter](https://github.com/Evangeliont/aston-react/blob/master/src/AppRouter/AppRouter.tsx)
+- [x] Есть применение lazy + Suspense: [ErrorBoundary](https://github.com/Evangeliont/aston-react/blob/master/src/AppRouter/AppRouter.tsx)
 
 #### Redux
 
-- [x] Используем Modern Redux with Redux Toolkit:[Store](https://github.com/Evangeliont/aston-react/blob/master/src/store/store.ts)
-- [x] Используем слайсы:[authSlice](https://github.com/Evangeliont/aston-react/blob/master/src/store/slice/authSlice.ts)
-- [x] Есть хотя бы одна кастомная мидлвара или `createListenerMiddleware`:
-- [x] Используется RTK Query:[getDataOneApi](https://github.com/Evangeliont/aston-react/blob/master/src/store/services/getDataOneApi.ts)
-- [x] Используется Transforming Responses:[Serialization](https://github.com/Evangeliont/aston-react/blob/master/src/util/serialization.ts)
+- [x] Используем Modern Redux with Redux Toolkit: [Store](https://github.com/Evangeliont/aston-react/blob/master/src/store/store.ts)
+- [x] Используем слайсы: [authSlice](https://github.com/Evangeliont/aston-react/blob/master/src/store/slice/authSlice.ts)
+- [x] Есть хотя бы одна кастомная мидлвара или `createListenerMiddleware`: [loggerMiddleware](https://github.com/Evangeliont/aston-react/blob/master/src/middleware/loggerMiddleware.ts)
+- [x] Используется RTK Query: [getDataOneApi](https://github.com/Evangeliont/aston-react/blob/master/src/store/services/getDataOneApi.ts)
+- [x] Используется Transforming Responses: [Serialization](https://github.com/Evangeliont/aston-react/blob/master/src/util/serialization.ts)
 
 ---
 
