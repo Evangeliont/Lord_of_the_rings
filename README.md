@@ -13,20 +13,20 @@
 
 ### 1 уровень (обязательный - необходимый минимум)
 
-- [ ] Реализованы Требования к функциональности
-- [ ] Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем LocalStorage
+- [ ] Реализованы Требования к функциональности [Частично]
+- ~~[ ] Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем LocalStorage~~
 
 #### React
 
 - [x] Пишем функциональные компоненты c хуками в приоритете над классовыми
-- [x] Есть разделение на умные и глупые компоненты: [Глупый](https://github.com/Evangeliont/aston-react/blob/master/src/App.tsx) [Умный]
+- [x] Есть разделение на умные и глупые компоненты: [Глупый](https://github.com/Evangeliont/aston-react/blob/master/src/App.tsx) [Умный](https://github.com/Evangeliont/aston-react/blob/master/src/components/CardList/CardList.tsx)
 - [x] Есть рендеринг списков: [CardList](https://github.com/Evangeliont/aston-react/blob/master/src/components/CardList/CardList.tsx)
-- [ ] Реализована хотя бы одна форма:
-- [ ] Есть применение Контекст API:
-- [ ] Есть применение предохранителя:
-- [ ] Есть хотя бы один кастомный хук:
-- [x] Хотя бы несколько компонентов используют PropTypes: [Пример](https://github.com/Evangeliont/aston-react/blob/master/src/components/Button/Button.tsx)
-- [ ] Поиск не должен триггерить много запросов к серверу (debounce):
+- ~~[ ] Реализована хотя бы одна форма:~~
+- [x] Есть применение Контекст API: [useTheme](https://github.com/Evangeliont/aston-react/blob/master/src/hooks/useTheme.ts)
+- [x] Есть применение предохранителя: [https://github.com/Evangeliont/aston-react/blob/master/src/AppRouter/AppRouter.tsx](AppRouter)
+- [x] Есть хотя бы один кастомный хук:[useTheme](https://github.com/Evangeliont/aston-react/blob/master/src/hooks/useTheme.ts)
+- [x] Хотя бы несколько компонентов используют PropTypes: [Button](https://github.com/Evangeliont/aston-react/blob/master/src/components/Button/Button.tsx)
+- ~~[ ] Поиск не должен триггерить много запросов к серверу (debounce):~~
 - [x] Есть применение lazy + Suspense: [AppRouter](https://github.com/Evangeliont/aston-react/blob/master/src/AppRouter/AppRouter.tsx)
 
 #### Redux
