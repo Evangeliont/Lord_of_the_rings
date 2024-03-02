@@ -1,0 +1,35 @@
+@import "../../../assets//scss/variables.scss";
+@import "../../../assets/scss/mixins/flex.scss";
+@import "../../../assets/scss/mixins/text.scss";
+
+.search {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  padding: 5px 20px;
+  background-color: $color-white;
+  box-shadow: 0 5px 10px $color-shadow;
+  border-radius: 25px;
+  transition: box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+
+  &Wrapper {
+    @include flexDefault;
+    align-items: center;
+    cursor: inherit;
+  }
+
+  &Label {
+    @include quote;
+    margin-right: 10px;
+  }
+
+  &Input {
+    border: 0;
+    outline: 0;
+  }
+}
+
+.search:hover {
+  box-shadow: 0 7px 20px $color-shadow;
+}

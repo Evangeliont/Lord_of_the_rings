@@ -1,13 +1,12 @@
 import { Container } from "../../components/Container";
-import { Test } from "../../components/Test";
+import s from "./home.module.scss";
 
 export const Home = () => {
   return (
     <main>
-      <section>
+      <section className={s.home}>
         <Container>
           <div>Home</div>
-          <Test />
         </Container>
       </section>
     </main>

@@ -1,0 +1,32 @@
+@import "../../assets//scss/variables.scss";
+@import "../../assets/scss/mixins/flex.scss";
+@import "../../assets/scss/mixins/text.scss";
+
+.header {
+  padding: 40px 0;
+  background-color: $color-white;
+  box-shadow: 0 0 20px $color-shadow;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+
+  &Wrapper {
+    @include flexDefault;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &LogoLink {
+    @include flexDefault;
+    align-items: center;
+  }
+
+  &LogoImg {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  &LogoTitle {
+    @include subTitle;
+  }
+}
