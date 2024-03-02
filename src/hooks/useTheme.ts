@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 
-const useTheme = () => {
+export const useTheme = () => {
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
@@ -17,5 +17,3 @@ const useTheme = () => {
 
   return themeContextValue;
 };
-
-export default useTheme;

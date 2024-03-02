@@ -1,10 +1,9 @@
-import React from "react";
+import { FC, ReactNode } from "react";
 import s from "./layout.module.scss";
 
-interface props {
-  children?: React.ReactNode;
+interface Layout {
+  children?: ReactNode;
 }
-
-export const Layout = ({ children }: props) => {
-  return <main className={s.container}>{children}</main>;
+export const Layout: FC<Layout> = ({ children }) => {
+  return <div className={s.layout}>{children}</div>;
 };
