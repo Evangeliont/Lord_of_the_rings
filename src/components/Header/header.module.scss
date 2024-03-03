@@ -4,7 +4,7 @@
 
 .header {
   padding: 40px 0;
-  background-color: $color-white;
+  background-color: $color-black;
   box-shadow: 0 0 20px $color-shadow;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -28,5 +28,6 @@
 
   &LogoTitle {
     @include subTitle;
+    color: $color-gold;
   }
 }
