@@ -1,0 +1,7 @@
+@import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixins/flex.scss";
+@import "../../assets/scss/mixins/text.scss";
+
+.auth {
+  @include flexDefault;
+}

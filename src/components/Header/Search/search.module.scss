@@ -8,7 +8,7 @@
   background-color: transparent;
   padding: 5px 20px;
   background-color: $color-white;
-  box-shadow: 0 5px 10px $color-shadow;
+  box-shadow: 0 5px 10px $color-shadow-gold;
   border-radius: 25px;
   transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
@@ -31,5 +31,5 @@
 }
 
 .search:hover {
-  box-shadow: 0 7px 20px $color-shadow;
+  box-shadow: 0 7px 20px $color-shadow-gold-hover;
 }
