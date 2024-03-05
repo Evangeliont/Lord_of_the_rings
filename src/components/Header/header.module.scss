@@ -4,7 +4,6 @@
 
 .header {
   padding: 40px 0;
-  background-color: $color-black;
   box-shadow: 0 0 20px $color-shadow;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -30,4 +29,31 @@
     @include subTitle;
     color: $color-gold;
   }
+
+  &Button {
+    @include quote;
+    color: $color-white;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    padding: 5px 20px;
+    background-color: $color-gold;
+    box-shadow: 0 5px 10px $color-shadow-gold;
+    border-radius: 25px;
+    transition: box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  &Button:hover {
+    box-shadow: 0 7px 20px $color-shadow-gold-hover;
+  }
+}
+.headerBlack {
+  transition: all 0.2s ease-in-out;
+  background-color: $color-black;
+}
+
+.headerWhite {
+  transition: all 0.2s ease-in-out;
+  background-color: $color-white;
 }
