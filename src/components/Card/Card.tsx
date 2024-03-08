@@ -1,8 +1,9 @@
-import { useGetCahractersQuery } from "../../store/api/dataOneApi";
+import { Link } from "react-router-dom";
+import { useGetCharactersQuery } from "../../store/api/dataOneApi";
 import s from "./card.module.scss";
 
 export const Card = () => {
-  const { data, error, isLoading } = useGetCahractersQuery("");
+  const { data, error, isLoading } = useGetCharactersQuery("");
 
   const characters = data
     ? data.docs.map((item) => (
@@ -11,6 +12,9 @@ export const Card = () => {
           <p>Race: {item.race}</p>
           <p>Gender: {item.gender}</p>
           <p>Realm: {item.realm || "Unknown"} </p>
+          <Link to={`/character/${item._id}`}>
+            <button>Add More</button>
+          </Link>
         </li>
       ))
     : null;

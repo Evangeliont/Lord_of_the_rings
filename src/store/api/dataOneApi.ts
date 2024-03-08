@@ -12,13 +12,18 @@ export const dataOneApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getCahracters: builder.query<CharacterApi, string>({
+    getCharacters: builder.query<CharacterApi, string>({
       query: () => ({
         url: "/character",
         params: { limit: 12 },
       }),
     }),
+    getCharacterId: builder.query<CharacterApi, string>({
+      query: (id: string) => ({
+        url: `/character/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetCahractersQuery } = dataOneApi;
+export const { useGetCharactersQuery, useGetCharacterIdQuery } = dataOneApi;
