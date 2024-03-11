@@ -1,0 +1,40 @@
+@import "../../../assets/scss/variables.scss";
+@import "../../../assets/scss/mixins/text.scss";
+@import "../../../assets/scss/mixins/flex.scss";
+
+.cardDetails {
+  padding-top: 70px;
+
+  &Head {
+    @include flexDefault;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &Title {
+    @include title;
+    margin-bottom: 20px;
+  }
+
+  &Content {
+    padding: 30px;
+    box-shadow: 0 0 20px $color-shadow;
+    border-radius: 12px;
+    background-color: $color-black;
+  }
+
+  &Subtitle {
+    @include subTitle;
+    color: $color-gold;
+    margin-bottom: 15px;
+  }
+
+  &Description:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  &Description {
+    @include description;
+    color: $color-white;
+  }
+}

@@ -1,21 +1,29 @@
-import { ArrData } from "../../pages/Home";
+import { Link } from "react-router-dom";
+import { useGetCharactersQuery } from "../../store/api/dataOneApi";
 import s from "./card.module.scss";
 
-interface CardProps {
-  heroes: ArrData[];
-}
+export const Card = () => {
+  const { data, error, isLoading } = useGetCharactersQuery("");
 
-export const Card = ({ heroes }: CardProps) => {
+  const characters = data
+    ? data.docs.map((item) => (
+        <li key={item._id} className={s.cardItem}>
+          <h3>{item.name}</h3>
+          <p>Race: {item.race}</p>
+          <p>Gender: {item.gender}</p>
+          <p>Realm: {item.realm || "Unknown"} </p>
+          <Link to={`/card/${item._id}`}>
+            <button>Add More</button>
+          </Link>
+        </li>
+      ))
+    : null;
+
   return (
     <ul className={s.card}>
-      {heroes.map((item) => (
-        <li key={item.id} className={s.cardItem}>
-          <div>{item.id}</div>
-          <div>{item.name}</div>
-          <div>{item.race}</div>
-          <div>{item.age}</div>
-        </li>
-      ))}
+      {isLoading && <div>Loading...</div>}
+      {error && null}
+      {characters}
     </ul>
   );
 };
