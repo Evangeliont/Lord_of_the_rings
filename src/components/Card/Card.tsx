@@ -12,7 +12,7 @@ export const Card = () => {
           <p>Race: {item.race}</p>
           <p>Gender: {item.gender}</p>
           <p>Realm: {item.realm || "Unknown"} </p>
-          <Link to={`/character/${item._id}`}>
+          <Link to={`/card/${item._id}`}>
             <button>Add More</button>
           </Link>
         </li>

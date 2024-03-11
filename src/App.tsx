@@ -19,7 +19,7 @@ function App() {
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/character/:id" element={<CardDetails />} />
+              <Route path="/card/:id" element={<CardDetails />} />
               <Route path="/signUp" element={<SingUp />} />
               <Route path="/signIn" element={<SingIn />} />
               <Route path="/NotFound" element={<NotFound />} />

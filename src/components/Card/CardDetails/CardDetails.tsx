@@ -1,6 +1,8 @@
 import { Link, useParams } from "react-router-dom";
-import { Layout } from "../../Layout";
 import { dataOneApi } from "../../../store/api/dataOneApi";
+import { Layout } from "../../Layout";
+import { Container } from "../../Container";
+import s from "./cardDetails.module.scss";
 
 export const CardDetails = () => {
   const { id } = useParams<{ id: string | undefined }>();
@@ -9,25 +11,42 @@ export const CardDetails = () => {
 
   return (
     <Layout>
-      {isLoading && <div>Loading...</div>}
-      <div>
-        {!!data &&
-          data.docs.map((item) => (
-            <div key={item._id}>
-              <Link to="/">Back</Link>
-              <h2>Character Information</h2>
-              <h3>{item.name}</h3>
-              <p>Race: {item.race}</p>
-              <p>Gender: {item.gender}</p>
-              <p>birth: {item.birth}</p>
-              <p>death: {item.death}</p>
-              <p>hair: {item.hair}</p>
-              <p>name: {item.name}</p>
-              <p>realm: {item.realm}</p>
-              <p>spouse: {item.spouse}</p>
-            </div>
-          ))}
-      </div>
+      <Container>
+        <section className={s.cardDetails}>
+          <div className={s.cardDetailsHead}>
+            <h2 className={s.cardDetailsTitle}>Details hero</h2>
+            <Link to="/">Back</Link>
+          </div>
+          <div className={s.cardDetailsContent}>
+            {isLoading && <div>Loading...</div>}
+            {!!data &&
+              data.docs.map((item) => (
+                <div key={item._id}>
+                  <h3 className={s.cardDetailsSubtitle}>{item.name}</h3>
+                  <p className={s.cardDetailsDescription}>Race: {item.race}</p>
+                  <p className={s.cardDetailsDescription}>
+                    Gender: {item.gender}
+                  </p>
+                  <p className={s.cardDetailsDescription}>
+                    realm: {item.realm || "Unknown"}
+                  </p>
+                  <p className={s.cardDetailsDescription}>
+                    birth: {item.birth || "Unknown"}
+                  </p>
+                  <p className={s.cardDetailsDescription}>
+                    death: {item.death || "Unknown"}
+                  </p>
+                  <p className={s.cardDetailsDescription}>
+                    hair: {item.hair || "Unknown"}
+                  </p>
+                  <p className={s.cardDetailsDescription}>
+                    spouse: {item.spouse || "Unknown"}
+                  </p>
+                </div>
+              ))}
+          </div>
+        </section>
+      </Container>
     </Layout>
   );
 };
