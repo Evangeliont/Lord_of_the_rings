@@ -4,15 +4,12 @@ import s from "./auth.module.scss";
 export const Auth = () => {
   return (
     <div className={s.auth}>
-      <Link
-        style={{
-          marginRight: 10,
-        }}
-        to="/signUp"
-      >
+      <Link className={s.authBtnLink} to="/signUp">
         Sing Up
       </Link>
-      <Link to="/signIn">Sing In</Link>
+      <Link className={s.authBtnLink} to="/signIn">
+        Sing In
+      </Link>
     </div>
   );
 };
