@@ -4,4 +4,100 @@
 
 .auth {
   @include flexDefault;
+
+  &BtnLink:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &BtnLink {
+    @include quote;
+    color: $color-gold;
+    transition: 0.2s ease-in-out;
+  }
+
+  &BtnLink:hover {
+    @include quote;
+    color: $color-gold-hover;
+  }
+
+  &BtnLink:active {
+    @include quote;
+    color: $color-gray;
+  }
+}
+
+.authForm {
+  width: 550px;
+  @include flexDefault;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 30px;
+  box-shadow: 0 0 20px $color-shadow;
+  border-radius: 12px;
+  background-color: $color-black;
+  margin-bottom: 40px;
+
+  &Wrapper {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  &Label:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &Label {
+    width: 100%;
+    @include flexDefault;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &LabelText {
+    @include subTitle;
+    color: $color-gold;
+    margin-bottom: 10px;
+  }
+
+  &Input {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+
+    @include quote;
+    font-size: 16px;
+    color: $color-white;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background-color: $color-gray;
+  }
+
+  &Submit {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+
+    width: 100%;
+
+    @include quote;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-white;
+    padding: 10px 20px;
+    background-color: $color-gold;
+    box-shadow: 0 5px 10px $color-shadow-gold;
+    border-radius: 12px;
+    transition: background-color 0.12s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  &Submit:hover {
+    box-shadow: 0 7px 20px $color-shadow-gold-hover;
+  }
+
+  &Submit:active {
+    background-color: $color-black;
+  }
 }

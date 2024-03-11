@@ -1,0 +1,31 @@
+@import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixins/text.scss";
+@import "../../assets/scss/mixins/flex.scss";
+
+.content {
+  @include flexDefault;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px;
+
+  &Title {
+    @include title;
+    margin-bottom: 40px;
+  }
+
+  &Link {
+    @include quote;
+    color: $color-gold;
+    transition: color 0.2s ease-in-out;
+  }
+
+  &Link:hover {
+    @include quote;
+    color: $color-gold-hover;
+  }
+
+  &Link:active {
+    @include quote;
+    color: $color-gray;
+  }
+}

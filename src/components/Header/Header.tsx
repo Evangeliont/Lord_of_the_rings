@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { Container } from "../Container";
 import { Auth } from "../Auth";
 import { Search } from "./Search";
+import { Link } from "react-router-dom";
+import { ThemeContext } from "../../Context/ThemeContext";
 import logo from "../../assets/images/logotype.png";
 import s from "./header.module.scss";
-import { ThemeContext } from "../../Context/ThemeContext";
 
 export const Header = () => {
   const currentTheme = useContext(ThemeContext);
@@ -17,10 +18,10 @@ export const Header = () => {
     >
       <Container>
         <div className={s.headerWrapper}>
-          <a className={s.headerLogoLink} href="/">
+          <Link className={s.headerLogoLink} to="/">
             <img className={s.headerLogoImg} src={logo} alt="logo" />
             <h1 className={s.headerLogoTitle}>LOTR</h1>
-          </a>
+          </Link>
           <Auth />
           <button className={s.headerButton} onClick={currentTheme.toggleTheme}>
             Toggle Theme
