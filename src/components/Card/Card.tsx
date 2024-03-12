@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetCharactersQuery } from "../../store/api/dataOneApi";
 import s from "./card.module.scss";
+import { Pagination } from "../Pagination";
 
 export const Card = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,11 +41,7 @@ export const Card = () => {
         {characters}
       </ul>
       <div>
-        {pageNumbers.map((number) => (
-          <button key={number} onClick={() => setCurrentPage(number)}>
-            {number}
-          </button>
-        ))}
+        <Pagination pageNumbers={pageNumbers} onChangePage={setCurrentPage} />
       </div>
     </>
   );

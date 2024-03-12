@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { CharacterApi, CharacterCustom } from "../../types/Characters";
-import { transformDataType } from "../../utils/TransformedDataTypes";
+import { transformDataType } from "../../utils/transformedDataTypes";
 
 export const dataOneApi = createApi({
   reducerPath: "dataOneApi",
