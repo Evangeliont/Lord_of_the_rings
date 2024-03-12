@@ -7,12 +7,12 @@ export const Card = () => {
 
   const characters = data
     ? data.docs.map((item) => (
-        <li key={item._id} className={s.cardItem}>
+        <li key={item.id} className={s.cardItem}>
           <h3>{item.name}</h3>
           <p>Race: {item.race}</p>
           <p>Gender: {item.gender}</p>
           <p>Realm: {item.realm || "Unknown"} </p>
-          <Link to={`/card/${item._id}`}>
+          <Link to={`/card/${item.id}`}>
             <button>Add More</button>
           </Link>
         </li>

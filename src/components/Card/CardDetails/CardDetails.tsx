@@ -21,7 +21,7 @@ export const CardDetails = () => {
             {isLoading && <div>Loading...</div>}
             {!!data &&
               data.docs.map((item) => (
-                <div key={item._id}>
+                <div key={item.id}>
                   <h3 className={s.cardDetailsSubtitle}>{item.name}</h3>
                   <p className={s.cardDetailsDescription}>Race: {item.race}</p>
                   <p className={s.cardDetailsDescription}>
