@@ -5,10 +5,10 @@ export const Auth = () => {
   return (
     <div className={s.auth}>
       <Link className={s.authBtnLink} to="/signUp">
-        Sing Up
+        Sign Up
       </Link>
       <Link className={s.authBtnLink} to="/signIn">
-        Sing In
+        Sign In
       </Link>
     </div>
   );

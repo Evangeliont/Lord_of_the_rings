@@ -4,13 +4,13 @@ import { Layout } from "../../components/Layout";
 import { AuthForm } from "../../components/Auth";
 import s from "./signUp.module.scss";
 
-export const SingUp = () => {
+export const SignUp = () => {
   return (
     <Layout>
       <Container>
         <div className={s.content}>
           <h2 className={s.contentTitle}>Sign Up</h2>
-          <AuthForm />
+          <AuthForm isSignUp={true} />
           <p>
             Already have an&nbsp;
             <Link className={s.contentLink} to="/signIn">

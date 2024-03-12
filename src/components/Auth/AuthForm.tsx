@@ -1,25 +1,21 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import s from "./auth.module.scss";
-import { useAuthUser } from "../../hooks/useAuthUser";
+import { useNavigate } from "react-router-dom";
+import { addUserLS, checkAuthentication } from "../../types/ValidationAuth"; // Импортируем функции из вашего файла
 
-import { useAppDispatch } from "../../store/hooks";
-import { UserState, addUser } from "../../store/slices/uesrSlice";
+interface AuthFormProps {
+  isSignUp: boolean;
+}
 
-export const AuthForm = () => {
-  const { username, email, password } = useAuthUser();
-  const dispatch = useAppDispatch();
+export const AuthForm = ({ isSignUp }: AuthFormProps) => {
+  const navigate = useNavigate();
 
-  const [formData, setFormData] = useState<UserState>({
-    username: username || "",
-    email: email || "",
-    password: password || "",
+  // Состояние формы
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
   });
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    dispatch(addUser(formData));
-    console.log("Form submitted:", formData);
-  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -29,11 +25,35 @@ export const AuthForm = () => {
     });
   };
 
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(formData);
+    if (isSignUp) {
+      // Логика для регистрации
+      addUserLS(formData.username, formData.email, formData.password);
+      alert("Регистрация прошла успешно");
+    } else {
+      // Логика для входа
+      if (
+        checkAuthentication({
+          email: formData.email,
+          password: formData.password,
+        })
+      ) {
+        alert("Вы успешно вошли в систему");
+      } else {
+        alert("Неправильный логин или пароль");
+      }
+    }
+    navigate("/"); // или куда-то, куда вы хотите перенаправить пользователя после входа/регистрации
+  };
+
   return (
     <form className={s.authForm} onSubmit={handleSubmit}>
-      <div className={s.authFormWrapper}>
+      {/* Форма */}
+      {isSignUp && (
         <label className={s.authFormLabel}>
-          <p className={s.authFormLabelText}>Login</p>
+          <p className={s.authFormLabelText}>Username</p>
           <input
             className={s.authFormInput}
             type="text"
@@ -42,30 +62,30 @@ export const AuthForm = () => {
             onChange={handleChange}
           />
         </label>
-        <label className={s.authFormLabel}>
-          <p className={s.authFormLabelText}>Email</p>
-          <input
-            className={s.authFormInput}
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-        <label className={s.authFormLabel}>
-          <p className={s.authFormLabelText}>Password</p>
-          <input
-            className={s.authFormInput}
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </label>
-      </div>
+      )}
+      <label className={s.authFormLabel}>
+        <p className={s.authFormLabelText}>Email</p>
+        <input
+          className={s.authFormInput}
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+      </label>
+      <label className={s.authFormLabel}>
+        <p className={s.authFormLabelText}>Password</p>
+        <input
+          className={s.authFormInput}
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+      </label>
 
       <button className={s.authFormSubmit} type="submit">
-        Submit
+        {isSignUp ? "Регистрация" : "Вход"}
       </button>
     </form>
   );
