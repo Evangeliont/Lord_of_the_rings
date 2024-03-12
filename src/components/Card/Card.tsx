@@ -1,9 +1,22 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetCharactersQuery } from "../../store/api/dataOneApi";
 import s from "./card.module.scss";
 
 export const Card = () => {
-  const { data, error, isLoading } = useGetCharactersQuery("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage] = useState(12);
+  const { data, error, isLoading } = useGetCharactersQuery({
+    page: currentPage,
+    limit: perPage,
+  });
+
+  const totalPages = data && data.pages ? data.pages : 0;
+
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
 
   const characters = data
     ? data.docs.map((item) => (
@@ -20,10 +33,19 @@ export const Card = () => {
     : null;
 
   return (
-    <ul className={s.card}>
-      {isLoading && <div>Loading...</div>}
-      {error && null}
-      {characters}
-    </ul>
+    <>
+      <ul className={s.card}>
+        {isLoading && <div>Loading...</div>}
+        {error && null}
+        {characters}
+      </ul>
+      <div>
+        {pageNumbers.map((number) => (
+          <button key={number} onClick={() => setCurrentPage(number)}>
+            {number}
+          </button>
+        ))}
+      </div>
+    </>
   );
 };

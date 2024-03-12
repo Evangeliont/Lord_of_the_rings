@@ -13,10 +13,13 @@ export const dataOneApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getCharacters: builder.query<CharacterCustom, string>({
-      query: () => ({
+    getCharacters: builder.query<
+      CharacterCustom,
+      { page: number; limit: number }
+    >({
+      query: ({ limit, page }) => ({
         url: "/character",
-        params: { limit: 12 },
+        params: { limit, page: page },
       }),
       transformResponse: (response: CharacterApi) => ({
         docs: transformDataType(response),
