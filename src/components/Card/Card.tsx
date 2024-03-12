@@ -27,9 +27,12 @@ export const Card = () => {
           <p>Race: {item.race || "Unknown"}</p>
           <p>Gender: {item.gender || "Unknown"}</p>
           <p>Realm: {item.realm || "Unknown"} </p>
-          <Link to={`/card/${item.id}`}>
-            <button>Add More</button>
-          </Link>
+          <div className={s.cardButtons}>
+            <Link to={`/card/${item.id}`}>
+              <button className={s.cardButton}>Details</button>
+            </Link>
+            <button className={s.cardButton}>Add</button>
+          </div>
         </li>
       ))
     : null;
