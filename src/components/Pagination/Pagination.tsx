@@ -1,3 +1,5 @@
+import s from "./pagintaion.module.scss";
+
 interface PaginationProps {
   pageNumbers: number[];
   onChangePage: (pageNumber: number) => void;
@@ -5,9 +7,13 @@ interface PaginationProps {
 
 export const Pagination = ({ pageNumbers, onChangePage }: PaginationProps) => {
   return (
-    <div>
+    <div className={s.pagination}>
       {pageNumbers.map((number) => (
-        <button key={number} onClick={() => onChangePage(number)}>
+        <button
+          className={s.paginationButton}
+          key={number}
+          onClick={() => onChangePage(number)}
+        >
           {number}
         </button>
       ))}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useGetCharactersQuery } from "../../store/api/dataOneApi";
 import s from "./card.module.scss";
@@ -6,10 +7,10 @@ import { Pagination } from "../Pagination";
 
 export const Card = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage] = useState(12);
+  const [limit] = useState(12);
   const { data, error, isLoading } = useGetCharactersQuery({
     page: currentPage,
-    limit: perPage,
+    limit: limit,
   });
 
   const totalPages = data && data.pages ? data.pages : 0;
@@ -23,8 +24,8 @@ export const Card = () => {
     ? data.docs.map((item) => (
         <li key={item.id} className={s.cardItem}>
           <h3>{item.name}</h3>
-          <p>Race: {item.race}</p>
-          <p>Gender: {item.gender}</p>
+          <p>Race: {item.race || "Unknown"}</p>
+          <p>Gender: {item.gender || "Unknown"}</p>
           <p>Realm: {item.realm || "Unknown"} </p>
           <Link to={`/card/${item.id}`}>
             <button>Add More</button>
@@ -45,4 +46,12 @@ export const Card = () => {
       </div>
     </>
   );
+};
+
+Card.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  race: PropTypes.string,
+  gender: PropTypes.string,
+  realm: PropTypes.string,
 };

@@ -1,0 +1,42 @@
+@import "../../assets//scss/variables.scss";
+@import "../../assets/scss/mixins/flex.scss";
+@import "../../assets/scss/mixins/grid.scss";
+@import "../../assets/scss/mixins/text.scss";
+
+.pagination {
+  padding: 30px 0;
+
+  &Button:not(:last-child) {
+    margin-right: 5px;
+  }
+
+  &Button {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+
+    @include quote;
+    background-color: $color-white;
+    border-radius: 3px;
+    color: $color-black;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 5px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &Button:hover {
+    background-color: $color-black;
+    color: $color-white;
+  }
+
+  &Button:active {
+    background-color: $color-gray;
+    color: $color-white;
+  }
+
+  &Button:focus {
+    background-color: $color-black;
+    color: $color-white;
+  }
+}
