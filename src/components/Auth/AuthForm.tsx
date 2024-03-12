@@ -10,7 +10,6 @@ interface AuthFormProps {
 export const AuthForm = ({ isSignUp }: AuthFormProps) => {
   const navigate = useNavigate();
 
-  // Состояние формы
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -29,11 +28,9 @@ export const AuthForm = ({ isSignUp }: AuthFormProps) => {
     event.preventDefault();
     console.log(formData);
     if (isSignUp) {
-      // Логика для регистрации
       addUserLS(formData.username, formData.email, formData.password);
       alert("Регистрация прошла успешно");
     } else {
-      // Логика для входа
       if (
         checkAuthentication({
           email: formData.email,
@@ -45,12 +42,11 @@ export const AuthForm = ({ isSignUp }: AuthFormProps) => {
         alert("Неправильный логин или пароль");
       }
     }
-    navigate("/"); // или куда-то, куда вы хотите перенаправить пользователя после входа/регистрации
+    navigate("/");
   };
 
   return (
     <form className={s.authForm} onSubmit={handleSubmit}>
-      {/* Форма */}
       {isSignUp && (
         <label className={s.authFormLabel}>
           <p className={s.authFormLabelText}>Username</p>
