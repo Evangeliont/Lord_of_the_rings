@@ -1,9 +1,9 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 export const useDebounce = (searchRequest: string, delay: number) => {
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handler = setTimeout(() => setValue(searchRequest), delay);
     return () => clearTimeout(handler);
   }, [delay, searchRequest]);
