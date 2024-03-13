@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import s from "./pagintaion.module.scss";
 
 interface PaginationProps {
@@ -19,4 +20,9 @@ export const Pagination = ({ pageNumbers, onChangePage }: PaginationProps) => {
       ))}
     </div>
   );
+};
+
+Pagination.propTypes = {
+  pageNumbers: PropTypes.arrayOf(PropTypes.number).isRequired,
+  onChangePage: PropTypes.func.isRequired,
 };
