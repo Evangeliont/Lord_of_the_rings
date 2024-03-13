@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useGetCharactersQuery } from "../../store/api/dataOneApi";
 import s from "./card.module.scss";
 import { Pagination } from "../Pagination";
+import { Preloader } from "../Preloader";
 
 export const Card = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +41,7 @@ export const Card = () => {
   return (
     <>
       <ul className={s.card}>
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <Preloader />}
         {error && null}
         {characters}
       </ul>

@@ -6,6 +6,8 @@ import { NotFound } from "./pages/NotFound";
 import { SignUp } from "./pages/SignUp";
 import { SignIn } from "./pages/SignIn";
 import { CardDetails } from "./components/Card/CardDetails";
+import { Favorites } from "./pages/Favorites";
+import { History } from "./pages/History";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/card/:id" element={<CardDetails />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/history" element={<History />} />
         <Route path="/NotFound" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/NotFound" replace />} />
       </Routes>
