@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getParseItemsLS } from "../../utils/LocalStorageUtils";
+import { getParseItemsLS } from "../../utils/saveDataUser";
 
 export interface UserState {
   username?: string;

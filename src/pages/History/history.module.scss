@@ -1,0 +1,11 @@
+@import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixins/text.scss";
+
+.history {
+  padding: 70px 0;
+
+  &Title {
+    @include title;
+    margin-bottom: 20px;
+  }
+}

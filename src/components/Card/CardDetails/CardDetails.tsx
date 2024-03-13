@@ -3,6 +3,7 @@ import { dataOneApi } from "../../../store/api/dataOneApi";
 import { Layout } from "../../Layout";
 import { Container } from "../../Container";
 import s from "./cardDetails.module.scss";
+import { Preloader } from "../../Preloader";
 
 export const CardDetails = () => {
   const { id } = useParams<{ id: string | undefined }>();
@@ -18,7 +19,7 @@ export const CardDetails = () => {
             <Link to="/">Back</Link>
           </div>
           <div className={s.cardDetailsContent}>
-            {isLoading && <div>Loading...</div>}
+            {isLoading && <Preloader />}
             {!!data &&
               data.docs.map((item) => (
                 <div key={item.id}>

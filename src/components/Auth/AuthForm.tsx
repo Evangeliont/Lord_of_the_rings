@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import s from "./auth.module.scss";
 import { useNavigate } from "react-router-dom";
-import { addUserLS, checkAuthentication } from "../../types/ValidationAuth"; // Импортируем функции из вашего файла
+import { addUserLS, checkAuthentication } from "../../types/ValidationAuth";
 
 interface AuthFormProps {
   isSignUp: boolean;
@@ -81,7 +81,7 @@ export const AuthForm = ({ isSignUp }: AuthFormProps) => {
       </label>
 
       <button className={s.authFormSubmit} type="submit">
-        {isSignUp ? "Регистрация" : "Вход"}
+        {isSignUp ? "Register" : "Enter"}
       </button>
     </form>
   );

@@ -10,6 +10,16 @@ export const Auth = () => {
       <Link className={s.authBtnLink} to="/signIn">
         Sign In
       </Link>
+
+      <Link className={s.authBtnLink} to="/favorites">
+        Favorites
+      </Link>
+      <Link className={s.authBtnLink} to="/history">
+        History
+      </Link>
+      <Link className={s.authBtnLink} to="/history">
+        Log Out
+      </Link>
     </div>
   );
 };
