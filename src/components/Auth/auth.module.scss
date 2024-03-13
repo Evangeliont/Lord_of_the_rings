@@ -74,6 +74,10 @@
     background-color: $color-gray;
   }
 
+  &ErrorMessage {
+    color: #ff0000;
+  }
+
   &Submit {
     border: 0;
     outline: 0;

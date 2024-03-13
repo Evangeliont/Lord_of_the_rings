@@ -10,7 +10,7 @@ export const SignUp = () => {
       <Container>
         <div className={s.content}>
           <h2 className={s.contentTitle}>Sign Up</h2>
-          <AuthForm isSignUp={true} />
+          <AuthForm isSignUp={true} pathname={"/signUp"} />
           <p>
             Already have an&nbsp;
             <Link className={s.contentLink} to="/signIn">

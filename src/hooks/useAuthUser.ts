@@ -1,10 +1,17 @@
-import { useAppSelector } from "../store/hooks";
-import { RootState } from "../store/store";
+import { useEffect } from "react";
+import { useAppDispatch } from "../store/hooks";
+import { authorizedUser } from "../store/slices/userSlice";
+import { getAuthLS } from "../utils/saveDataUser";
 
 export const useAuthUser = () => {
-  const { username, email, password } = useAppSelector(
-    (state: RootState) => state.user
-  );
+  const dispatch = useAppDispatch();
+  const emailLS = getAuthLS();
 
-  return { username, email, password };
+  console.log(emailLS);
+
+  useEffect(() => {
+    if (emailLS) {
+      dispatch(authorizedUser(emailLS));
+    }
+  }, []);
 };

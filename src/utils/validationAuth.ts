@@ -1,4 +1,4 @@
-import { getParseItemsLS } from "../utils/saveDataUser";
+import { getParseItemsLS } from "./saveDataUser";
 
 interface AuthUser {
   email: string;
