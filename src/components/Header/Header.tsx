@@ -9,7 +9,6 @@ import s from "./header.module.scss";
 
 export const Header = () => {
   const currentTheme = useContext(ThemeContext);
-
   return (
     <header
       className={`${s.header} ${

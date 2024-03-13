@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getParseItemsLS } from "../../utils/saveDataUser";
+import { RootState } from "../store";
 
 export interface UserState {
   username?: string;
@@ -38,5 +39,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { addUser, removeUser } = userSlice.actions;
+export const getEmail = (state: RootState) => state.user.email;
+
+export const { addUser, authorizedUser, removeUser } = userSlice.actions;
 export default userSlice.reducer;

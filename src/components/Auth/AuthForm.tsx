@@ -1,62 +1,79 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import s from "./auth.module.scss";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { addUserLS, checkAuthentication } from "../../types/ValidationAuth";
+import { checkAuthentication } from "../../types/ValidationAuth";
+import { useAppDispatch } from "../../store/hooks";
+import { addUser, authorizedUser } from "../../store/slices/userSlice";
+import { errorMessageForm } from "../../utils/errorMessageForm";
+import s from "./auth.module.scss";
 
 interface AuthFormProps {
   isSignUp: boolean;
+  pathname: "/signIn" | "/signUp";
 }
 
-export const AuthForm = ({ isSignUp }: AuthFormProps) => {
-  const navigate = useNavigate();
+export interface Form {
+  username?: string;
+  email: string;
+  password: string;
+}
 
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
+export const AuthForm = ({ isSignUp, pathname }: AuthFormProps) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const location = pathname === "/signUp";
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Form>({
+    mode: "onChange",
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+    },
   });
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(formData);
-    if (isSignUp) {
-      addUserLS(formData.username, formData.email, formData.password);
-      alert("Регистрация прошла успешно");
-    } else {
-      if (
-        checkAuthentication({
-          email: formData.email,
-          password: formData.password,
+  const onSubmit: SubmitHandler<Form> = (data) => {
+    if (location) {
+      dispatch(
+        addUser({
+          username: data.username,
+          email: data.email,
+          password: data.password,
         })
-      ) {
-        alert("Вы успешно вошли в систему");
-      } else {
-        alert("Неправильный логин или пароль");
-      }
+      );
+      navigate("/");
+      return;
     }
-    navigate("/");
+    if (checkAuthentication(data)) {
+      dispatch(authorizedUser(data.email));
+      navigate("/");
+      return;
+    }
+    navigate("/signUp");
   };
 
   return (
-    <form className={s.authForm} onSubmit={handleSubmit}>
+    <form className={s.authForm} onSubmit={handleSubmit(onSubmit)}>
       {isSignUp && (
         <label className={s.authFormLabel}>
           <p className={s.authFormLabelText}>Username</p>
           <input
             className={s.authFormInput}
             type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
+            {...register("username", {
+              required: "Email is required",
+              minLength: 2,
+              maxLength: 10,
+            })}
           />
+          <span className={s.authFormErrorMessage}>
+            {errors.username && (
+              <p>{errorMessageForm("Name", errors.username.type)}</p>
+            )}
+          </span>
         </label>
       )}
       <label className={s.authFormLabel}>
@@ -64,20 +81,41 @@ export const AuthForm = ({ isSignUp }: AuthFormProps) => {
         <input
           className={s.authFormInput}
           type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
+          {...register("email", {
+            required: "Email is required",
+            minLength: 3,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+              message: "Email is invalid",
+            },
+          })}
         />
+        <span className={s.authFormErrorMessage}>
+          {errors.email && (
+            <p>
+              {errors.email.message +
+                errorMessageForm("Email", errors.email.type)}
+            </p>
+          )}
+        </span>
       </label>
       <label className={s.authFormLabel}>
         <p className={s.authFormLabelText}>Password</p>
         <input
           className={s.authFormInput}
           type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
+          autoComplete="on"
+          {...register("password", {
+            required: "Email is required",
+            minLength: 5,
+            maxLength: 15,
+          })}
         />
+        <span className={s.authFormErrorMessage}>
+          {errors.password && (
+            <p>{errorMessageForm("Password", errors.password.type)}</p>
+          )}
+        </span>
       </label>
 
       <button className={s.authFormSubmit} type="submit">
