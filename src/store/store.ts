@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
 import { dataOneApi } from "./api/dataOneApi";
 import { userSlice } from "./slices/userSlice";
+import { LSMiddleware } from "./middleware/middleware";
 
 export const store = configureStore({
   reducer: {
@@ -8,9 +10,12 @@ export const store = configureStore({
     [userSlice.reducerPath]: userSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(dataOneApi.middleware),
+    getDefaultMiddleware()
+      .concat(dataOneApi.middleware)
+      .prepend(LSMiddleware.middleware),
 });
 
+setupListeners(store.dispatch);
 export default store;
 
 export type RootState = ReturnType<typeof store.getState>;

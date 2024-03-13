@@ -8,8 +8,11 @@ import { SignIn } from "./pages/SignIn";
 import { CardDetails } from "./components/Card/CardDetails";
 import { Favorites } from "./pages/Favorites";
 import { History } from "./pages/History";
+import { useAuthUser } from "./hooks/useAuthUser";
 
 function App() {
+  useAuthUser();
+
   return (
     <Layout>
       <Header />

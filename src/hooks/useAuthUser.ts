@@ -3,9 +3,11 @@ import { useAppDispatch } from "../store/hooks";
 import { authorizedUser } from "../store/slices/userSlice";
 import { getAuthLS } from "../utils/saveDataUser";
 
-export const useAuthCheck = () => {
+export const useAuthUser = () => {
   const dispatch = useAppDispatch();
   const emailLS = getAuthLS();
+
+  console.log(emailLS);
 
   useEffect(() => {
     if (emailLS) {

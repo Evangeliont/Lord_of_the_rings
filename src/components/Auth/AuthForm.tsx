@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { checkAuthentication } from "../../types/ValidationAuth";
+import { checkAuthentication } from "../../utils/validationAuth";
 import { useAppDispatch } from "../../store/hooks";
 import { addUser, authorizedUser } from "../../store/slices/userSlice";
 import { errorMessageForm } from "../../utils/errorMessageForm";
