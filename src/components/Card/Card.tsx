@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useGetCharactersQuery } from "../../store/api/dataOneApi";
 import s from "./card.module.scss";
 import { Pagination } from "../Pagination";
 import { Preloader } from "../Preloader";
 
 export const Card = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const pageQuery = searchParams.get("page") || "1";
+
+  const [currentPage, setCurrentPage] = useState(Number(pageQuery));
   const [limit] = useState(12);
   const { data, error, isLoading } = useGetCharactersQuery({
     page: currentPage,
@@ -16,10 +20,19 @@ export const Card = () => {
 
   const totalPages = data && data.pages ? data.pages : 0;
 
-  const pageNumbers = [];
+  const pageNumbers: number[] = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
+
+  useEffect(() => {
+    setCurrentPage(Number(pageQuery));
+  }, [pageQuery]);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    navigate(`/?page=${pageNumber}`);
+  };
 
   const characters = data
     ? data.docs.map((item) => (
@@ -46,7 +59,7 @@ export const Card = () => {
         {characters}
       </ul>
       <div>
-        <Pagination pageNumbers={pageNumbers} onChangePage={setCurrentPage} />
+        <Pagination pageNumbers={pageNumbers} onChangePage={handlePageChange} />
       </div>
     </>
   );
