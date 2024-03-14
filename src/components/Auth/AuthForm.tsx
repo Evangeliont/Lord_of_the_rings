@@ -20,7 +20,7 @@ export interface Form {
 export const AuthForm = ({ isSignUp, pathname }: AuthFormProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const location = pathname === "/signUp";
+  const pathPageName = pathname === "/signUp";
 
   const {
     register,
@@ -36,7 +36,7 @@ export const AuthForm = ({ isSignUp, pathname }: AuthFormProps) => {
   });
 
   const onSubmit: SubmitHandler<Form> = (data) => {
-    if (location) {
+    if (pathPageName) {
       dispatch(
         addUser({
           username: data.username,
