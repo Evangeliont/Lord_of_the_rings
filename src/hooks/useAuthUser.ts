@@ -7,8 +7,6 @@ export const useAuthUser = () => {
   const dispatch = useAppDispatch();
   const emailLS = getAuthLS();
 
-  console.log(emailLS);
-
   useEffect(() => {
     if (emailLS) {
       dispatch(authorizedUser(emailLS));

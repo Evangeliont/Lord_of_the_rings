@@ -5,10 +5,10 @@ import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { SignUp } from "./pages/SignUp";
 import { SignIn } from "./pages/SignIn";
-import { CardDetails } from "./components/Card/CardDetails";
 import { Favorites } from "./pages/Favorites";
 import { History } from "./pages/History";
 import { useAuthUser } from "./hooks/useAuthUser";
+import { CardDetails } from "./components/CardList/Card/CardDetails";
 
 function App() {
   useAuthUser();

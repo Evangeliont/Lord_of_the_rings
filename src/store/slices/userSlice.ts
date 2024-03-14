@@ -23,7 +23,7 @@ export const userSlice = createSlice({
       state.email = action.payload.email;
       state.password = action.payload.password;
     },
-    authorizedUser(state, action: PayloadAction<string>) {
+    authorizedUser: (state, action: PayloadAction<string>) => {
       const user = getParseItemsLS(action.payload);
       if (user) {
         state.username = user.username;

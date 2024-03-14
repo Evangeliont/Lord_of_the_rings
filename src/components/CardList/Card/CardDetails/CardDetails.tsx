@@ -1,9 +1,9 @@
 import { Link, useParams } from "react-router-dom";
-import { dataOneApi } from "../../../store/api/dataOneApi";
-import { Layout } from "../../Layout";
-import { Container } from "../../Container";
+import { dataOneApi } from "../../../../store/api/dataOneApi";
+import { Container } from "../../../Container";
+import { Layout } from "../../../Layout";
+import { Preloader } from "../../../Preloader";
 import s from "./cardDetails.module.scss";
-import { Preloader } from "../../Preloader";
 
 export const CardDetails = () => {
   const { id } = useParams<{ id: string | undefined }>();
@@ -20,7 +20,7 @@ export const CardDetails = () => {
           </div>
           <div className={s.cardDetailsContent}>
             {isLoading && <Preloader />}
-            {!!data &&
+            {data &&
               data.docs.map((item) => (
                 <div key={item.id}>
                   <h3 className={s.cardDetailsSubtitle}>{item.name}</h3>

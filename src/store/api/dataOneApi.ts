@@ -21,23 +21,31 @@ export const dataOneApi = createApi({
         url: "/character",
         params: { limit, page: page },
       }),
-      transformResponse: (response: CharacterApi) => ({
-        docs: transformDataType(response),
-        limit: response.limit,
-        page: response.page,
-        pages: response.pages,
-      }),
+      transformResponse: (response: CharacterApi) => {
+        const newData = transformDataType(response);
+
+        return {
+          docs: newData,
+          limit: response.limit,
+          page: response.page,
+          pages: response.pages,
+        };
+      },
     }),
     getCharacterId: builder.query<CharacterCustom, string>({
       query: (id: string) => ({
         url: `/character/${id}`,
       }),
-      transformResponse: (response: CharacterApi) => ({
-        docs: transformDataType(response),
-        limit: response.limit,
-        page: response.page,
-        pages: response.pages,
-      }),
+      transformResponse: (response: CharacterApi) => {
+        const newData = transformDataType(response);
+
+        return {
+          docs: newData,
+          limit: response.limit,
+          page: response.page,
+          pages: response.pages,
+        };
+      },
     }),
   }),
 });

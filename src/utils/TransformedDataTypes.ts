@@ -19,7 +19,6 @@ export const transformDataType = (
       realm: el.realm,
       spouse: el.spouse,
       wikiUrl: el.wikiUrl,
-      like: false,
     };
   });
   return transformData.filter((el) => (el.race === "NaN" ? false : true));
