@@ -36,5 +36,4 @@ export interface CharacterCustomElement {
   realm: string;
   spouse: string;
   wikiUrl: string;
-  like: boolean;
 }

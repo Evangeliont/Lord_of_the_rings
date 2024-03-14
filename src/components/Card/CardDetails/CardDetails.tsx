@@ -20,7 +20,7 @@ export const CardDetails = () => {
           </div>
           <div className={s.cardDetailsContent}>
             {isLoading && <Preloader />}
-            {!!data &&
+            {data &&
               data.docs.map((item) => (
                 <div key={item.id}>
                   <h3 className={s.cardDetailsSubtitle}>{item.name}</h3>

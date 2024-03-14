@@ -2,14 +2,28 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useGetCharactersQuery } from "../../store/api/dataOneApi";
-import s from "./card.module.scss";
 import { Pagination } from "../Pagination";
 import { Preloader } from "../Preloader";
+import s from "./card.module.scss";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import {
+  getFavorite,
+  toggleFavoriteItem,
+} from "../../store/slices/favoriteSlice";
+import { getEmail } from "../../store/slices/userSlice";
+import { CharacterCustomElement } from "../../types/Characters";
 
 export const Card = () => {
+  const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const pageQuery = searchParams.get("page") || "1";
+
+  const userEmail = useAppSelector(getEmail);
+  const favoriteList = useAppSelector(getFavorite);
+  const isFav = favoriteList.some(
+    (item: CharacterCustomElement) => item.id === item.id
+  );
 
   const [currentPage, setCurrentPage] = useState(Number(pageQuery));
   const [limit] = useState(12);
@@ -34,6 +48,14 @@ export const Card = () => {
     navigate(`/?page=${pageNumber}`);
   };
 
+  const handleClick = (card: CharacterCustomElement, email?: string) => {
+    if (email) {
+      dispatch(toggleFavoriteItem({ item: card, email: email }));
+      return;
+    }
+    navigate("/signIn");
+  };
+
   const characters = data
     ? data.docs.map((item) => (
         <li key={item.id} className={s.cardItem}>
@@ -45,7 +67,12 @@ export const Card = () => {
             <Link to={`/card/${item.id}`}>
               <button className={s.cardButton}>Details</button>
             </Link>
-            <button className={s.cardButton}>Add</button>
+            <button
+              className={s.cardButton}
+              onClick={() => handleClick(item, userEmail)}
+            >
+              {isFav && userEmail ? "Remove" : "Add"}
+            </button>
           </div>
         </li>
       ))
