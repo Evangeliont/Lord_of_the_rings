@@ -1,10 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CharacterCustomElement } from "../../types/Characters";
-import { getFavoriteItemsFromLS } from "../../utils/saveDataUser";
+import {
+  getFavoriteItemsFromLS,
+  getParseItemsLS,
+  setParseItemsLS,
+} from "../../utils/saveDataUser";
 import { RootState } from "../store";
 
 export interface FavoriteState {
-  favoriteQqery: CharacterCustomElement[];
+  favoriteQuery: CharacterCustomElement[];
   email?: string;
 }
 
@@ -23,7 +27,7 @@ interface UpdateFavorite {
 }
 
 const initialFavoriteState: FavoriteState = {
-  favoriteQqery: [],
+  favoriteQuery: [],
   email: "",
 };
 
@@ -32,26 +36,34 @@ export const favoriteSlice = createSlice({
   initialState: initialFavoriteState,
   reducers: {
     toggleFavoriteItem: (state, action: PayloadAction<AddFavorite>) => {
-      const isFavoriteAlreadyState = state.favoriteQqery.some(
-        (item) => (item.id = action.payload.item.id)
+      const isFavoriteAlreadyState = state.favoriteQuery.some(
+        (item) => item.id === action.payload.item.id
       );
 
-      isFavoriteAlreadyState
-        ? (state.favoriteQqery = state.favoriteQqery.filter(
-            (item) => item.id !== action.payload.item.id
-          ))
-        : state.favoriteQqery.unshift(action.payload.item);
+      if (isFavoriteAlreadyState) {
+        state.favoriteQuery = state.favoriteQuery.filter(
+          (item) => item.id !== action.payload.item.id
+        );
+      } else {
+        state.favoriteQuery.unshift(action.payload.item);
+      }
+
+      const userData = getParseItemsLS(action.payload.email);
+      if (userData) {
+        userData.favorite = state.favoriteQuery;
+        setParseItemsLS(action.payload.email, userData);
+      }
     },
     getFavoriteItem: (state, action: PayloadAction<FavoriteProps>) => {
-      state.favoriteQqery = getFavoriteItemsFromLS(action.payload.email);
+      state.favoriteQuery = getFavoriteItemsFromLS(action.payload.email);
     },
     updateFavoriteItems: (state, action: PayloadAction<UpdateFavorite>) => {
-      state.favoriteQqery = action.payload.item;
+      state.favoriteQuery = action.payload.item;
     },
   },
 });
 
-export const getFavorite = (state: RootState) => state.favorite.favoriteQqery;
+export const getFavorite = (state: RootState) => state.favorite.favoriteQuery;
 
 export const { toggleFavoriteItem, getFavoriteItem, updateFavoriteItems } =
   favoriteSlice.actions;

@@ -1,22 +1,9 @@
-import { Card } from "../../components/Card";
+import { CardList } from "../../components/CardList";
 import { Container } from "../../components/Container";
 import { NotResult } from "../../components/NotResult";
 import { useAppSelector } from "../../store/hooks";
 import { getFavorite } from "../../store/slices/favoriteSlice";
 import s from "./favorites.module.scss";
-
-export interface CharacterCustomElement {
-  id: string;
-  birth: string;
-  death: string;
-  gender: string;
-  hair: string;
-  name: string;
-  race: string;
-  realm: string;
-  spouse: string;
-  wikiUrl: string;
-}
 
 export const Favorites = () => {
   const favoriteList = useAppSelector(getFavorite);
@@ -27,7 +14,7 @@ export const Favorites = () => {
       <section className={s.favorites}>
         <Container>
           <h2 className={s.favoritesTitle}>Favorites</h2>
-          {isEmty ? <NotResult /> : <Card card={favoriteList} />}
+          {isEmty ? <NotResult /> : <CardList character={favoriteList} />}
         </Container>
       </section>
     </main>

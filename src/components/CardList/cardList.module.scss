@@ -3,7 +3,7 @@
 @import "../../assets/scss/mixins/grid.scss";
 @import "../../assets/scss/mixins/text.scss";
 
-.card {
+.cardList {
   @include gridDefault;
   padding: 30px;
   box-shadow: 0 0 20px $color-shadow;
@@ -24,34 +24,5 @@
 
   &Item:hover {
     box-shadow: 0 5px 10px $color-shadow-gold-hover;
-  }
-
-  &Buttons {
-    margin-top: auto;
-    @include flexDefault;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &Button {
-    @include quote;
-    color: $color-white;
-    border: 0;
-    outline: 0;
-    background-color: transparent;
-    padding: 3px 20px;
-    background-color: $color-gold;
-    box-shadow: 0 5px 10px $color-shadow-gold;
-    border-radius: 12px;
-    transition: background-color 0.12s ease-in-out, box-shadow 0.2s ease-in-out;
-    cursor: pointer;
-  }
-
-  &Button:hover {
-    box-shadow: 0 7px 20px $color-shadow-gold-hover;
-  }
-
-  &Button:active {
-    background-color: $color-black;
   }
 }
