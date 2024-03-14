@@ -3,7 +3,7 @@ import { Container } from "../Container";
 import { Auth } from "../Auth";
 import { Search } from "./Search";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../Сontext/ThemeContext";
 import logo from "../../assets/images/logotype.png";
 import s from "./header.module.scss";
 
