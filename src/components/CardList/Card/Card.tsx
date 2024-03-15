@@ -8,13 +8,13 @@ import {
 import { getEmail } from "../../../store/slices/userSlice";
 import { CharacterCustomElement } from "../../../types/Characters";
 import s from "./card.module.scss";
+import { Button } from "../Button";
 
 export const Card = (character: CharacterCustomElement) => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-
   const userEmail = useAppSelector(getEmail);
   const favoriteList = useAppSelector(getFavorite);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const isFav = favoriteList.some(
     (item: CharacterCustomElement) => item.id === character.id
   );
@@ -28,7 +28,7 @@ export const Card = (character: CharacterCustomElement) => {
   };
 
   return (
-    <div>
+    <div className={s.cardContent}>
       <h3>{character.name}</h3>
       <p>Race: {character.race || "Unknown"}</p>
       <p>Gender: {character.gender || "Unknown"}</p>
@@ -37,12 +37,12 @@ export const Card = (character: CharacterCustomElement) => {
         <Link to={`/card/${character.id}`}>
           <button className={s.cardButton}>Details</button>
         </Link>
-        <button
+        <Button
           className={s.cardButton}
           onClick={() => handleClick(character, userEmail)}
         >
           {isFav && userEmail ? "Remove" : "Add"}
-        </button>
+        </Button>
       </div>
     </div>
   );

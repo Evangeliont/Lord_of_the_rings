@@ -10,6 +10,12 @@
     justify-content: space-between;
   }
 
+  &Content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   &Button {
     @include quote;
     color: $color-white;
