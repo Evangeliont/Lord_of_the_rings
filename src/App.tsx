@@ -1,32 +1,81 @@
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Header } from "./components/Header";
-import { Layout } from "./components/Layout";
-import { Home } from "./pages/Home";
-import { NotFound } from "./pages/NotFound";
-import { SignUp } from "./pages/SignUp";
-import { SignIn } from "./pages/SignIn";
-import { Favorites } from "./pages/Favorites";
-import { History } from "./pages/History";
 import { useAuthUser } from "./hooks/useAuthUser";
-import { CardDetails } from "./components/CardList/Card/CardDetails";
+import { ProtectedRouteComponent } from "./components/ProtectedRoute";
+import { ErrorBoundary } from "react-error-boundary";
+import { Preloader } from "./components/Preloader";
+
+const Home = lazy(() =>
+  import("./pages/Home").then((module) => ({ default: module.Home }))
+);
+const NotFound = lazy(() =>
+  import("./pages/NotFound").then((module) => ({ default: module.NotFound }))
+);
+const SignUp = lazy(() =>
+  import("./pages/SignUp").then((module) => ({ default: module.SignUp }))
+);
+const SignIn = lazy(() =>
+  import("./pages/SignIn").then((module) => ({ default: module.SignIn }))
+);
+const Favorites = lazy(() =>
+  import("./pages/Favorites").then((module) => ({
+    default: module.Favorites,
+  }))
+);
+const History = lazy(() =>
+  import("./pages/History").then((module) => ({
+    default: module.History,
+  }))
+);
+const CardDetails = lazy(() =>
+  import("./components/CardList/Card/CardDetails").then((module) => ({
+    default: module.CardDetails,
+  }))
+);
+const Layout = lazy(() =>
+  import("./components/Layout").then((module) => ({ default: module.Layout }))
+);
+const Header = lazy(() =>
+  import("./components/Header").then((module) => ({ default: module.Header }))
+);
 
 function App() {
   useAuthUser();
 
   return (
-    <Layout>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/card/:id" element={<CardDetails />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/signIn" element={<SignIn />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/NotFound" element={<NotFound />} />
-        <Route path="*" element={<Navigate to="/NotFound" replace />} />
-      </Routes>
-    </Layout>
+    <Suspense fallback={<Preloader />}>
+      <Layout>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/card/:id" element={<CardDetails />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/history" element={<ProtectedRouteComponent />}>
+            <Route
+              path="/history"
+              element={
+                <ErrorBoundary fallback={<h1>Error 404</h1>}>
+                  <History />
+                </ErrorBoundary>
+              }
+            />
+          </Route>
+          <Route path="/favorites" element={<ProtectedRouteComponent />}>
+            <Route
+              path="/favorites"
+              element={
+                <ErrorBoundary fallback={<h1>Error 404</h1>}>
+                  <Favorites />
+                </ErrorBoundary>
+              }
+            />
+          </Route>
+          <Route path="/NotFound" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/NotFound" replace />} />
+        </Routes>
+      </Layout>
+    </Suspense>
   );
 }
 

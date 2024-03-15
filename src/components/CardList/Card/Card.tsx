@@ -7,7 +7,7 @@ import {
 } from "../../../store/slices/favoriteSlice";
 import { getEmail } from "../../../store/slices/userSlice";
 import { CharacterCustomElement } from "../../../types/Characters";
-import { Button } from "../Button";
+import { Button } from "../../Button";
 import s from "./card.module.scss";
 
 export const Card = (character: CharacterCustomElement) => {
