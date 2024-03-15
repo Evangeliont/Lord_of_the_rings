@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CharacterCustomElement } from "../../types/Characters";
-import {
-  getFavoriteItemsFromLS,
-  getParseItemsLS,
-  setParseItemsLS,
-} from "../../utils/saveDataUser";
+import { getFavoriteItemsFromLS } from "../../utils/saveDataUser";
 import { RootState } from "../store";
 
 export interface FavoriteState {
@@ -46,12 +42,6 @@ export const favoriteSlice = createSlice({
         );
       } else {
         state.favoriteQuery.unshift(action.payload.item);
-      }
-
-      const userData = getParseItemsLS(action.payload.email);
-      if (userData) {
-        userData.favorite = state.favoriteQuery;
-        setParseItemsLS(action.payload.email, userData);
       }
     },
     getFavoriteItem: (state, action: PayloadAction<FavoriteProps>) => {

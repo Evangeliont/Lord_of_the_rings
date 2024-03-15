@@ -7,8 +7,8 @@ import {
 } from "../../../store/slices/favoriteSlice";
 import { getEmail } from "../../../store/slices/userSlice";
 import { CharacterCustomElement } from "../../../types/Characters";
-import s from "./card.module.scss";
 import { Button } from "../Button";
+import s from "./card.module.scss";
 
 export const Card = (character: CharacterCustomElement) => {
   const userEmail = useAppSelector(getEmail);
@@ -34,8 +34,8 @@ export const Card = (character: CharacterCustomElement) => {
       <p>Gender: {character.gender || "Unknown"}</p>
       <p>Realm: {character.realm || "Unknown"} </p>
       <div className={s.cardButtons}>
-        <Link to={`/card/${character.id}`}>
-          <button className={s.cardButton}>Details</button>
+        <Link className={s.cardButton} to={`/card/${character.id}`}>
+          Details
         </Link>
         <Button
           className={s.cardButton}
