@@ -27,6 +27,11 @@ const History = lazy(() =>
     default: module.History,
   }))
 );
+const SearchResult = lazy(() =>
+  import("./pages/SearchResult").then((module) => ({
+    default: module.SearchResult,
+  }))
+);
 const CardDetails = lazy(() =>
   import("./components/CardList/Card/CardDetails").then((module) => ({
     default: module.CardDetails,
@@ -71,6 +76,14 @@ function App() {
               }
             />
           </Route>
+          <Route
+            path="/searchResult"
+            element={
+              <ErrorBoundary fallback={<h1>Error 404</h1>}>
+                <SearchResult />
+              </ErrorBoundary>
+            }
+          />
           <Route path="/NotFound" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/NotFound" replace />} />
         </Routes>

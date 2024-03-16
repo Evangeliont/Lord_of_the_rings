@@ -1,0 +1,43 @@
+@import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixins/text.scss";
+@import "../../assets/scss/mixins/grid.scss";
+@import "../../assets/scss/mixins/flex.scss";
+
+.searchResult {
+  padding: 70px 0;
+
+  &Title {
+    @include title;
+
+    margin-bottom: 20px;
+  }
+
+  &List {
+    @include flexDefault;
+    flex-direction: column;
+    padding: 30px;
+    box-shadow: 0 0 20px $color-shadow;
+    border-radius: 12px;
+    background-color: $color-black;
+  }
+
+  &Item:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  &Item {
+    height: 100%;
+    @include flexDefault;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: $color-white;
+    box-shadow: 0 5px 10px $color-shadow-gold;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  &Item:hover {
+    box-shadow: 0 5px 10px $color-shadow-gold-hover;
+  }
+}

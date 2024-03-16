@@ -4,12 +4,14 @@ import { dataOneApi } from "./api/dataOneApi";
 import { userSlice } from "./slices/userSlice";
 import { favoriteSlice } from "./slices/favoriteSlice";
 import { LSMiddleware } from "./middleware/middleware";
+import { historySlice } from "./slices/historySlice";
 
 export const store = configureStore({
   reducer: {
     [dataOneApi.reducerPath]: dataOneApi.reducer,
     [userSlice.reducerPath]: userSlice.reducer,
     [favoriteSlice.reducerPath]: favoriteSlice.reducer,
+    [historySlice.reducerPath]: historySlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

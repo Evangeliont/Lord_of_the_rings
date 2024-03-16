@@ -1,0 +1,48 @@
+@import "../../assets//scss/variables.scss";
+@import "../../assets/scss/mixins/flex.scss";
+@import "../../assets/scss/mixins/grid.scss";
+@import "../../assets/scss/mixins/text.scss";
+
+.markHistory {
+  &Item {
+    height: 100%;
+    @include flexDefault;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: $color-white;
+    box-shadow: 0 5px 10px $color-shadow-gold;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  &Subtitle {
+    @include quote;
+  }
+
+  &Item:hover {
+    box-shadow: 0 5px 10px $color-shadow-gold-hover;
+  }
+
+  &Button {
+    @include quote;
+    color: $color-white;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    padding: 5px 20px;
+    background-color: $color-gold;
+    box-shadow: 0 5px 10px $color-shadow-gold;
+    border-radius: 12px;
+    transition: background-color 0.12s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  &Button:hover {
+    box-shadow: 0 7px 20px $color-shadow-gold-hover;
+  }
+
+  &Button:active {
+    background-color: $color-black;
+  }
+}
