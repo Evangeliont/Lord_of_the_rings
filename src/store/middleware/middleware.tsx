@@ -12,6 +12,11 @@ import {
   toggleFavoriteItem,
   updateFavoriteItems,
 } from "../slices/favoriteSlice";
+import {
+  addHistoryItem,
+  deleteHistoryItem,
+  updateHistoryItem,
+} from "../slices/historySlice";
 
 export interface LSData {
   email: string;
@@ -40,6 +45,12 @@ LSMiddleware.startListening({
             email: parseItems.email,
           })
         );
+        listenerApi.dispatch(
+          updateHistoryItem({
+            historyQuery: parseItems.history,
+            email: parseItems.email,
+          })
+        );
       }
     }
   },
@@ -53,6 +64,12 @@ LSMiddleware.startListening({
       listenerApi.dispatch(
         updateFavoriteItems({
           item: parseItems.favorite,
+          email: parseItems.email,
+        })
+      );
+      listenerApi.dispatch(
+        updateHistoryItem({
+          historyQuery: parseItems.history,
           email: parseItems.email,
         })
       );
@@ -81,6 +98,34 @@ LSMiddleware.startListening({
           ))
         : parseItems.favorite.unshift(action.payload.item);
       setParseItemsLS(action.payload.email, parseItems);
+    }
+  },
+});
+
+LSMiddleware.startListening({
+  actionCreator: addHistoryItem,
+  effect: (action) => {
+    if (action.payload.email) {
+      const parseItems = getParseItemsLS(action.payload.email);
+      if (parseItems) {
+        parseItems.history.unshift(action.payload.search);
+        setParseItemsLS(action.payload.email, parseItems);
+      }
+    }
+  },
+});
+
+LSMiddleware.startListening({
+  actionCreator: deleteHistoryItem,
+  effect: (action) => {
+    if (action.payload.email) {
+      const parseItems = getParseItemsLS(action.payload.email);
+      if (parseItems) {
+        parseItems.history = parseItems.history.filter(
+          (item: string) => item !== action.payload.search
+        );
+        setParseItemsLS(action.payload.email, parseItems);
+      }
     }
   },
 });

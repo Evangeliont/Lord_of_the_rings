@@ -1,5 +1,6 @@
 @import "../../assets/scss/variables.scss";
 @import "../../assets/scss/mixins/text.scss";
+@import "../../assets/scss/mixins/flex.scss";
 
 .history {
   padding: 70px 0;
@@ -7,5 +8,13 @@
   &Title {
     @include title;
     margin-bottom: 20px;
+  }
+
+  &List {
+    @include flexDefault;
+    padding: 30px;
+    box-shadow: 0 0 20px $color-shadow;
+    border-radius: 12px;
+    background-color: $color-black;
   }
 }

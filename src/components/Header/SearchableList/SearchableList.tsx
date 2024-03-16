@@ -3,24 +3,30 @@ import { useGetCharacterSearchQuery } from "../../../store/api/dataOneApi";
 import s from "./searchableList.module.scss";
 import { useDebounce } from "../../../hooks/useDebounce";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { getEmail } from "../../../store/slices/userSlice";
+import { addHistoryItem } from "../../../store/slices/historySlice";
 
 export const SearchableList = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const userEmail = useAppSelector(getEmail);
   const queryParam = new URLSearchParams(location.search).get("query");
   const [value, setValue] = useState<string>(queryParam || "");
-  const debouncedSearchTerm = useDebounce(value, 500);
+  const debouncedSearchTerm = useDebounce(value, 300);
   const [isOpen, setIsOpen] = useState(false);
   const { data } = useGetCharacterSearchQuery(debouncedSearchTerm || "", {
     skip: value.trim().length <= 0,
   });
 
-  const characterName = data && data.docs ? data.docs.map((item) => item) : [];
+  const characterName = data && data.docs ? data.docs : [];
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>, id: string) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    dispatch(addHistoryItem({ search: value, email: userEmail }));
     setIsOpen(false);
-    navigate(`/card/${id}`);
+    navigate(`/searchResult?${value}`);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,10 +41,7 @@ export const SearchableList = () => {
 
   return (
     <>
-      <form
-        className={s.searchableList}
-        onSubmit={(event) => handleSubmit(event, characterName[0]?.id || "")}
-      >
+      <form className={s.searchableList} onSubmit={handleSubmit}>
         <label className={s.searchableListWrapper}>
           <button className={s.searchableListLabel} type="submit">
             search

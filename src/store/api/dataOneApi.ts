@@ -49,7 +49,7 @@ export const dataOneApi = createApi({
     }),
     getCharacterSearch: builder.query<CharacterCustom, string>({
       query: (name: string) => ({
-        url: "/character?name=",
+        url: "/character",
         params: { name },
       }),
       transformResponse: (response: CharacterApi) => {
