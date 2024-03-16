@@ -31,7 +31,7 @@ export const Home = () => {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    navigate(`/?page=${pageNumber}`);
+    navigate(`/?page=${String(pageNumber)}`);
   };
 
   // Наверное с этим надо что-то придумать...

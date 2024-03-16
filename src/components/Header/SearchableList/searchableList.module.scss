@@ -1,0 +1,97 @@
+@import "../../../assets//scss/variables.scss";
+@import "../../../assets/scss/mixins/flex.scss";
+@import "../../../assets/scss/mixins/text.scss";
+
+.searchableList {
+  position: relative;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  padding: 5px 20px;
+  background-color: $color-white;
+  box-shadow: 0 5px 10px $color-shadow-gold;
+  border-radius: 25px;
+  transition: box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+
+  &Wrapper {
+    @include flexDefault;
+    align-items: center;
+    cursor: inherit;
+  }
+
+  &Label {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    @include quote;
+    margin-right: 10px;
+  }
+
+  &Input {
+    border: 0;
+    outline: 0;
+    @include quote;
+  }
+
+  &Input::placeholder {
+    @include quote;
+  }
+}
+
+.searchableList:hover {
+  box-shadow: 0 7px 20px $color-shadow-white-hover;
+}
+
+.searchList {
+  display: none;
+}
+
+.searchListOpen {
+  position: absolute;
+  width: 293px;
+  height: 100px;
+  display: flex;
+  background-color: $color-white;
+  top: 0;
+  z-index: 1;
+}
+
+.searchListPopup {
+  display: none;
+  position: absolute;
+  right: 175px;
+  top: 122px;
+  width: 293px;
+  height: 250px;
+  background-color: $color-black;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  justify-content: center;
+}
+
+.searchListPopupOpen {
+  display: flex;
+  z-index: 3;
+}
+
+.searchListChar {
+  padding: 20px;
+  width: 180px;
+}
+
+.searchListItem {
+  z-index: 4;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  background-color: $color-white;
+  border-radius: 5px;
+}
+
+.searchListTitle {
+  @include quote;
+}

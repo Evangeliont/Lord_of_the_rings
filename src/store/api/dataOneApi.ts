@@ -15,11 +15,11 @@ export const dataOneApi = createApi({
   endpoints: (builder) => ({
     getCharacters: builder.query<
       CharacterCustom,
-      { page: number; limit: number }
+      { limit: number; page: number }
     >({
-      query: ({ limit, page }) => ({
+      query: ({ page, limit }) => ({
         url: "/character",
-        params: { limit, page: page },
+        params: { page: page, limit },
       }),
       transformResponse: (response: CharacterApi) => {
         const newData = transformDataType(response);
@@ -47,7 +47,27 @@ export const dataOneApi = createApi({
         };
       },
     }),
+    getCharacterSearch: builder.query<CharacterCustom, string>({
+      query: (name: string) => ({
+        url: "/character?name=",
+        params: { name },
+      }),
+      transformResponse: (response: CharacterApi) => {
+        const newData = transformDataType(response);
+
+        return {
+          docs: newData,
+          limit: response.limit,
+          page: response.page,
+          pages: response.pages,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetCharactersQuery, useGetCharacterIdQuery } = dataOneApi;
+export const {
+  useGetCharactersQuery,
+  useGetCharacterIdQuery,
+  useGetCharacterSearchQuery,
+} = dataOneApi;
