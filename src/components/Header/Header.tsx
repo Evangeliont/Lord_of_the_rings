@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { Container } from "../Container";
 import { Auth } from "../Auth";
-import { Search } from "./Search";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../Сontext/ThemeContext";
 import logo from "../../assets/images/logotype.png";
 import s from "./header.module.scss";
+import { Search } from "./Search";
 
 export const Header = () => {
   const currentTheme = useContext(ThemeContext);
+
   return (
     <header
       className={`${s.header} ${

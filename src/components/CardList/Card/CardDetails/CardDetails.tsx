@@ -5,7 +5,7 @@ import { Layout } from "../../../Layout";
 import { Preloader } from "../../../Preloader";
 import { getEmail } from "../../../../store/slices/userSlice";
 import { CharacterCustomElement } from "../../../../types/Characters";
-import { Button } from "../../Button";
+import { Button } from "../../../Button";
 import { useAppSelector, useAppDispatch } from "../../../../store/hooks";
 import {
   getFavorite,
