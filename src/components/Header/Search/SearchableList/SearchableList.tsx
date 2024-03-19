@@ -45,8 +45,7 @@ export const SearchableList = () => {
     if (!value.trim()) return;
     dispatch(addHistoryItem({ search: value, email: userEmail }));
     setIsOpen(false);
-    navigate(`/searchResult?query=${value}`);
-    setValue("");
+    navigate(`/searchResult/?query=${value}`);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

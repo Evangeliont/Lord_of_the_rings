@@ -2,8 +2,9 @@
 
 # Lord of the rings
 
-- Проект представляет собой энциклопедию персонажей по вселенной **Властелина колец**.
-- В данном проекте предоставлены все персонажи данной вселенной.
+
+- Проект представляет собой энциклопедию персонажей по вселенной **Властелина колец** Дж. Р. Р. Толкина.
+- В данном проекте предоставлены все персонажи данной вселенной и не только.
 - В будущем будет добавлен функционал пагинации. Адаптив и локализация сайта.
 - Так же в перспективе будет разработано API.
 
@@ -19,7 +20,7 @@
 - [x] **Пишем функциональные компоненты c хуками** в приоритете над классовыми.
 - [x] Есть разделение на **умные и глупые компоненты**. Глупый - ([CardList](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/components/CardList/CardList.tsx)), умный - ([SearchableList](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/components/Header/Search/SearchableList/SearchableList.tsx))
 - [x] Есть **рендеринг списков**. ([CardList](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/components/CardList/CardList.tsx), [CardDetails](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/components/CardList/Card/CardDetails/CardDetails.tsx))
-- [x] Реализована хотя бы одна **форма**. ([AuthForm](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/components/Auth/AuthForm.tsx) - выполнена при помощи библиотеки React Hook Form)
+- [x] Реализована хотя бы одна **форма**. ([AuthForm](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/components/Auth/AuthForm.tsx) - выполнена при помощи библиотеки [React Hook Form](https://react-hook-form.com/))
 - [x] Есть применение **Контекст API**. ([ThemeContext](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/context/ThemeContext.tsx))
 - [x] Есть применение **предохранителя**. ([App](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/App.tsx))
 - [x] Есть хотя бы один **кастомный хук**. ([useAuthUser](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/hooks/useAuthUser.ts)),
@@ -38,7 +39,7 @@
 ### **2 уровень (необязательный)**
 
 - [x] Использование **TypeScript**.
-- [x] Есть CI [Link Lord of the rings](https://lord-of-the-rings-six.vercel.app/)
+- [x] Есть CI: Деплой выполнен на платформе Vercel [Link to Lord of the rings](https://lord-of-the-rings-six.vercel.app/)
 
 **Функциональность проекта**
 

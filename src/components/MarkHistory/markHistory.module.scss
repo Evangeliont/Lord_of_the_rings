@@ -3,6 +3,10 @@
 @import "../../assets/scss/mixins/grid.scss";
 @import "../../assets/scss/mixins/text.scss";
 
+.markHistory:not(:last-child) {
+  margin-right: 20px;
+}
+
 .markHistory {
   &Item {
     height: 100%;
