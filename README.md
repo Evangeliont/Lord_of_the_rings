@@ -38,7 +38,7 @@
 ### **2 уровень (необязательный)**
 
 - [x] Использование **TypeScript**.
-- [x] Есть CI [Link Lord of the rings](lord-of-the-rings-six.vercel.app/)
+- [x] Есть CI [Link Lord of the rings](https://lord-of-the-rings-six.vercel.app/)
 
 **Функциональность проекта**
 
