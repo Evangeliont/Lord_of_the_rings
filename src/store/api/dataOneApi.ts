@@ -18,7 +18,7 @@ export const dataOneApi = createApi({
         url: "/character",
       }),
       transformResponse: (response: CharacterApi) => {
-        return { docs: transformData(response) } as CharacterCustom;
+        return { docs: transformData(response) };
       },
     }),
     getCharacterId: builder.query<CharacterCustom, string>({
@@ -26,16 +26,16 @@ export const dataOneApi = createApi({
         url: `/character/${id}`,
       }),
       transformResponse: (response: CharacterApi) => {
-        return { docs: transformData(response) } as CharacterCustom;
+        return { docs: transformData(response) };
       },
     }),
     getCharacterSearch: builder.query<CharacterCustom, string>({
       query: (name: string) => ({
         url: "/character",
-        params: { name },
+        params: { name: `/${name}/i` },
       }),
       transformResponse: (response: CharacterApi) => {
-        return { docs: transformData(response) } as CharacterCustom;
+        return { docs: transformData(response) };
       },
     }),
   }),

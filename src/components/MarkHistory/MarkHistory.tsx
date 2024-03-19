@@ -21,10 +21,10 @@ export const MarkHistory = ({ post }: MarkHistory) => {
 
   return (
     <div className={s.markHistory}>
-      <li className={s.markHistoryList}>
+      <li className={s.markHistoryItem}>
         <div
           className={s.markHistoryPost}
-          onClick={() => navigate(`/search/?query=${post}`)}
+          onClick={() => navigate(`/searchResult/?query=${post}`)}
         >
           <p className={s.markHistorySubtitle}>{post}</p>
         </div>
