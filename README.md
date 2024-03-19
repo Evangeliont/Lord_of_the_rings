@@ -1,5 +1,3 @@
-[Link Lord of the rings](https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square)
-
 ![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square)
 
 # Lord of the rings
@@ -35,12 +33,12 @@
 - [x] Используем **слайсы**. ([userSlice](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/store/slices/userSlice.ts), [favotiteSlice](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/store/slices/favoriteSlice.ts), [historySlice](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/store/slices/historySlice.ts))
 - [x] Есть хотя бы одна **кастомная мидлвара**. ([middleware](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/store/middleware/middleware.tsx))
 - [x] Используется **RTK Query**. ([dataOneApi](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/store/api/dataOneApi.ts))
-- [x] Используется **Transforming Responses**. ([Transforming Response](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/utils/TransformedData.ts))
+- [x] Используется **Transforming Responses**. ([TransformedData](https://github.com/Evangeliont/Lord_of_the_rings/blob/master/src/utils/TransformedData.ts))
 
 ### **2 уровень (необязательный)**
 
 - [x] Использование **TypeScript**.
-- [x] Есть CI <img src="https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square" alt="Vercel Deploy">
+- [x] Есть CI [Link Lord of the rings](https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square)
 
 **Функциональность проекта**
 
