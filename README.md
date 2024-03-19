@@ -40,7 +40,7 @@
 ### **2 уровень (необязательный)**
 
 - [x] Использование **TypeScript**.
-- [x] Есть CI
+- [x] Есть CI <img src="https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square" alt="Vercel Deploy">
 
 **Функциональность проекта**
 
