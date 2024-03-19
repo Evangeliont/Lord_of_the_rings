@@ -1,6 +1,6 @@
-[Lord](https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square)
+[Link Lord of the rings](https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square)
+
 ![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square)
-<img src="https://therealsujitk-vercel-badge.vercel.app/?app=lord-of-the-rings&style=flat-square" alt="Vercel Deploy">
 
 # Lord of the rings
 
