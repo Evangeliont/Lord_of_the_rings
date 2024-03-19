@@ -1,6 +1,6 @@
 import { createListenerMiddleware } from "@reduxjs/toolkit";
 import { addUser, authorizedUser, removeUser } from "../slices/userSlice";
-import { CharacterCustomElement } from "../../types/Characters";
+import { CharacterCustomElement } from "../../types/DataApiTypes";
 import {
   addUserLS,
   getParseItemsLS,

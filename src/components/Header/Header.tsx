@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Container } from "../Container";
 import { Auth } from "../Auth";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../../Сontext/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import logo from "../../assets/images/logotype.png";
 import s from "./header.module.scss";
 import { Search } from "./Search";

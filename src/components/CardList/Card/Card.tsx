@@ -6,7 +6,7 @@ import {
   toggleFavoriteItem,
 } from "../../../store/slices/favoriteSlice";
 import { getEmail } from "../../../store/slices/userSlice";
-import { CharacterCustomElement } from "../../../types/Characters";
+import { CharacterCustomElement } from "../../../types/DataApiTypes";
 import { Button } from "../../Button";
 import s from "./card.module.scss";
 

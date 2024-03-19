@@ -1,5 +1,5 @@
 import { LSData } from "../types/LSData";
-import { CharacterCustomElement } from "../types/Characters";
+import { CharacterCustomElement } from "../types/DataApiTypes";
 
 export const getFavoriteItemsFromLS = (
   email: string

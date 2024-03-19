@@ -1,4 +1,4 @@
-import { CharacterCustomElement } from "./Characters";
+import { CharacterCustomElement } from "./DataApiTypes";
 
 export interface LSData {
   username: string;

@@ -1,4 +1,4 @@
-import { CharacterCustomElement } from "../../types/Characters";
+import { CharacterCustomElement } from "../../types/DataApiTypes";
 import { Card } from "./Card";
 import s from "./cardList.module.scss";
 
@@ -7,19 +7,19 @@ interface CardListProp {
 }
 
 export const CardList = ({ character }: CardListProp) => {
-  const contentCard = character.map((character) => (
-    <li className={s.cardListItem} key={character.id}>
+  const contentCard = character.map((char) => (
+    <li className={s.cardListItem} key={char.id}>
       <Card
-        id={character.id}
-        name={character.name}
-        race={character.race}
-        gender={character.gender}
-        realm={character.realm}
-        birth={character.birth}
-        death={character.death}
-        hair={character.hair}
-        spouse={character.spouse}
-        wikiUrl={character.wikiUrl}
+        id={char.id}
+        name={char.name}
+        race={char.race}
+        gender={char.gender}
+        realm={char.realm}
+        birth={char.birth}
+        death={char.death}
+        hair={char.hair}
+        spouse={char.spouse}
+        wikiUrl={char.wikiUrl}
       />
     </li>
   ));

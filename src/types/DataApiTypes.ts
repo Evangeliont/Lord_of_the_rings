@@ -1,8 +1,5 @@
 export interface CharacterApi {
   docs: CharacterApiElement[];
-  limit: number;
-  page: number;
-  pages: number;
 }
 
 export interface CharacterApiElement {
@@ -20,9 +17,6 @@ export interface CharacterApiElement {
 
 export interface CharacterCustom {
   docs: CharacterCustomElement[];
-  limit: number;
-  page: number;
-  pages: number;
 }
 
 export interface CharacterCustomElement {
