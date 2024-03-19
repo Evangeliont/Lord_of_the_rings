@@ -24,23 +24,26 @@ export const SearchResult = () => {
           <h2 className={s.searchResultTitle}>Search Results</h2>
 
           {isLoading && <Preloader />}
-          {!isLoading && isSuccess && characterName.length > 0 && (
-            <ul className={s.searchResultList}>
-              {characterName.map((item) => (
-                <li
-                  className={s.searchResultItem}
-                  key={item.id}
-                  onClick={() => {
-                    handleClick(item.id);
-                  }}
-                >
-                  <p className={s.searchResultSubTitle}>{item.name}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-          {!isLoading && isSuccess && characterName.length === 0 && (
-            <p className={s.searchResultSubTitle}>Nothing was found</p>
+          {!isLoading && isSuccess && (
+            <>
+              {characterName.length > 0 ? (
+                <ul className={s.searchResultList}>
+                  {characterName.map((item) => (
+                    <li
+                      className={s.searchResultItem}
+                      key={item.id}
+                      onClick={() => {
+                        handleClick(item.id);
+                      }}
+                    >
+                      <p className={s.searchResultSubTitle}>{item.name}</p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className={s.searchResultSubTitle}>Nothing was found</p>
+              )}
+            </>
           )}
         </Container>
       </section>

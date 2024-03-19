@@ -1,5 +1,10 @@
-import { SearchableList } from "../SearchableList";
+import { SearchableList } from "./SearchableList";
+import s from "./search.module.scss";
 
 export const Search = () => {
-  return <SearchableList />;
+  return (
+    <div className={s.search}>
+      <SearchableList />
+    </div>
+  );
 };

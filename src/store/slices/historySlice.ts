@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CharacterCustomElement } from "../../types/Characters";
+import { CharacterCustomElement } from "../../types/DataApiTypes";
 import { getParseItemsLS } from "../../utils/saveDataUser";
 import { RootState } from "../store";
 

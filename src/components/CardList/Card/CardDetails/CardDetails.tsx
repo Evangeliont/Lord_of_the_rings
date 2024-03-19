@@ -1,10 +1,10 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { dataOneApi } from "../../../../store/api/dataOneApi";
+import { useGetCharacterIdQuery } from "../../../../store/api/dataOneApi";
 import { Container } from "../../../Container";
 import { Layout } from "../../../Layout";
 import { Preloader } from "../../../Preloader";
 import { getEmail } from "../../../../store/slices/userSlice";
-import { CharacterCustomElement } from "../../../../types/Characters";
+import { CharacterCustomElement } from "../../../../types/DataApiTypes";
 import { Button } from "../../../Button";
 import { useAppSelector, useAppDispatch } from "../../../../store/hooks";
 import {
@@ -19,13 +19,13 @@ export const CardDetails = () => {
   const favoriteList = useAppSelector(getFavorite);
   const navigate = useNavigate();
   const { id } = useParams<{ id: string | undefined }>();
-  const { data, isLoading } = dataOneApi.useGetCharacterIdQuery(id || "");
+  const { data, isLoading } = useGetCharacterIdQuery(id || "");
 
-  // Здесь как-то всё усложнил...
   let isFav = false;
+
   if (data && data.docs.length > 0) {
-    isFav = favoriteList.some(
-      (item: CharacterCustomElement) => item.id === data.docs[0].id
+    isFav = data.docs.some((char) =>
+      favoriteList.some((item) => item.id === char.id)
     );
   }
 
@@ -75,7 +75,6 @@ export const CardDetails = () => {
                       className={s.cardDetailsLink}
                       href={item.wikiUrl}
                       target="_blank"
-                      rel="noopener noreferrer"
                     >
                       More info
                     </a>

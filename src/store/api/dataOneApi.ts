@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CharacterApi, CharacterCustom } from "../../types/Characters";
-import { transformDataType } from "../../utils/TransformedDataTypes";
+import { CharacterApi, CharacterCustom } from "../../types/DataApiTypes";
+import { transformData } from "../../utils/TransformedData";
 
 export const dataOneApi = createApi({
   reducerPath: "dataOneApi",
@@ -13,23 +13,12 @@ export const dataOneApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getCharacters: builder.query<
-      CharacterCustom,
-      { limit: number; page: number }
-    >({
-      query: ({ page, limit }) => ({
+    getCharacters: builder.query<CharacterCustom, string>({
+      query: () => ({
         url: "/character",
-        params: { page: page, limit },
       }),
       transformResponse: (response: CharacterApi) => {
-        const newData = transformDataType(response);
-
-        return {
-          docs: newData,
-          limit: response.limit,
-          page: response.page,
-          pages: response.pages,
-        };
+        return { docs: transformData(response) } as CharacterCustom;
       },
     }),
     getCharacterId: builder.query<CharacterCustom, string>({
@@ -37,14 +26,7 @@ export const dataOneApi = createApi({
         url: `/character/${id}`,
       }),
       transformResponse: (response: CharacterApi) => {
-        const newData = transformDataType(response);
-
-        return {
-          docs: newData,
-          limit: response.limit,
-          page: response.page,
-          pages: response.pages,
-        };
+        return { docs: transformData(response) } as CharacterCustom;
       },
     }),
     getCharacterSearch: builder.query<CharacterCustom, string>({
@@ -53,14 +35,7 @@ export const dataOneApi = createApi({
         params: { name },
       }),
       transformResponse: (response: CharacterApi) => {
-        const newData = transformDataType(response);
-
-        return {
-          docs: newData,
-          limit: response.limit,
-          page: response.page,
-          pages: response.pages,
-        };
+        return { docs: transformData(response) } as CharacterCustom;
       },
     }),
   }),
