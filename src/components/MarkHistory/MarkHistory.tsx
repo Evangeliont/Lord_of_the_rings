@@ -13,6 +13,10 @@ export const MarkHistory = ({ post }: MarkHistory) => {
   const navigate = useNavigate();
   const userEmail = useAppSelector(getEmail);
 
+  const handleSelectPost = () => {
+    navigate(`/searchResult/?query=${post}`);
+  };
+
   const handleDeletePost = (post: string, userEmail?: string) => {
     if (userEmail) {
       dispatch(deleteHistoryItem({ search: post, email: userEmail }));
@@ -22,12 +26,9 @@ export const MarkHistory = ({ post }: MarkHistory) => {
   return (
     <div className={s.markHistory}>
       <li className={s.markHistoryItem}>
-        <div
-          className={s.markHistoryPost}
-          onClick={() => navigate(`/searchResult/?query=${post}`)}
-        >
+        <button className={s.markHistoryButton} onClick={handleSelectPost}>
           <p className={s.markHistorySubtitle}>{post}</p>
-        </div>
+        </button>
         <button
           className={s.markHistoryButton}
           onClick={() => handleDeletePost(post, userEmail)}
