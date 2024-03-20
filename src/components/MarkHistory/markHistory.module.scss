@@ -22,10 +22,15 @@
 
   &Subtitle {
     @include quote;
+    color: $color-white;
   }
 
   &Item:hover {
     box-shadow: 0 5px 10px $color-shadow-gold-hover;
+  }
+
+  &Button:not(:last-child) {
+    margin-bottom: 10px;
   }
 
   &Button {

@@ -1,8 +1,8 @@
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGetCharacterSearchQuery } from "../../../../store/api/dataOneApi";
 import s from "./searchableList.module.scss";
 import { useDebounce } from "../../../../hooks/useDebounce";
-import { ChangeEvent, FormEvent, useState, useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { getEmail } from "../../../../store/slices/userSlice";
 import { addHistoryItem } from "../../../../store/slices/historySlice";
@@ -13,15 +13,26 @@ export const SearchableList = () => {
   const dispatch = useAppDispatch();
   const userEmail = useAppSelector(getEmail);
   const queryParam = new URLSearchParams(location.search).get("query");
-  const [value, setValue] = useState<string>(queryParam || "");
+  const queryParamValue: string = queryParam ?? "";
+  const [value, setValue] = useState<string>(queryParamValue);
   const debouncedSearchTerm = useDebounce(value, 300);
+  const debouncedSearchTermValue: string = debouncedSearchTerm ?? "";
   const [isOpen, setIsOpen] = useState(false);
-  const { data } = useGetCharacterSearchQuery(debouncedSearchTerm, {
-    skip: debouncedSearchTerm === "",
-  });
+  const { data } = useGetCharacterSearchQuery(
+    debouncedSearchTermValue || queryParamValue,
+    {
+      skip: value.trim().length <= 0,
+    }
+  );
 
   const characterName = data && data.docs ? data.docs : [];
   const searchPopupRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setValue((prevValue) => {
+      return queryParamValue ?? prevValue;
+    });
+  }, [queryParamValue]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

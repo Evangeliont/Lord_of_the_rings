@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetCharacterIdQuery } from "../../../../store/api/dataOneApi";
 import { Container } from "../../../Container";
 import { Layout } from "../../../Layout";
@@ -43,7 +43,12 @@ export const CardDetails = () => {
         <section className={s.cardDetails}>
           <div className={s.cardDetailsHead}>
             <h2 className={s.cardDetailsTitle}>Details hero</h2>
-            <Link to="/">Back</Link>
+            <button
+              className={s.cardDetailsButton}
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </button>
           </div>
           <div className={s.cardDetailsContent}>
             {isLoading && <Preloader />}
